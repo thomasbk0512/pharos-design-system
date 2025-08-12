@@ -1,9 +1,12 @@
 {
-  "name": "design-system",
+  "name": "@pharos/design-system",
   "version": "1.0.0",
   "type": "module",
   "description": "Design system integrated with Figma MCP server",
   "main": "index.js",
+  "private": false,
+  "publishConfig": { "access": "public" },
+  "repository": { "type": "git", "url": "https://github.com/your-org/your-repo.git" },
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
@@ -15,7 +18,8 @@
     "lint:tokens": "node scripts/lint-guards.js && node scripts/validate-tokens.js",
     "prepare": "husky install",
     "test:e2e": "playwright test",
-    "test:update": "playwright test --update-snapshots"
+    "test:update": "playwright test --update-snapshots",
+    "release": "semantic-release"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.2",
@@ -32,11 +36,16 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
     "@playwright/test": "^1.45.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.6",
+    "@semantic-release/npm": "^11.0.2",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "chokidar": "^3.5.3",
     "husky": "^9.0.0",
     "nodemon": "^3.0.1",
+    "semantic-release": "^23.0.0",
     "style-dictionary": "^5.0.1",
     "typescript": "5.9.2"
   },
