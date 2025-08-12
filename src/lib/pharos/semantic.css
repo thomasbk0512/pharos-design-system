@@ -1,0 +1,46 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --ph-global-color-brand: #3538CD;
+  --ph-global-color-brand50: #E5E7FF;
+  --ph-global-color-slate-100: #f1f5f9;
+  --ph-global-color-slate-200: #e2e8f0;
+  --ph-global-color-slate-500: #64748b;
+  --ph-global-color-slate-800: #1f2937;
+  --ph-global-color-slate-900: #0f172a;
+  --ph-global-spacing-4: 4px;
+  --ph-global-spacing-8: 8px;
+  --ph-global-spacing-12: 12px;
+  --ph-global-spacing-16: 16px;
+  --ph-global-spacing-24: 24px;
+  --ph-global-spacing-32: 32px;
+  --ph-global-radius-control: 12px;
+  --ph-global-radius-card: 16px;
+  --ph-global-shadow-pharos: 0 1px 2px rgba(16,24,40,0.04);
+  --ph-global-shadow-pharos-sm: 0 1px 1px rgba(16,24,40,0.03);
+  --ph-global-motion-ease: cubic-bezier(.2,.8,.2,1);
+  --ph-global-motion-fast: 120ms;
+  --ph-global-motion-base: 150ms;
+  --ph-global-motion-slow: 240ms;
+  --ph-global-z-popover: 50;
+  --ph-global-z-overlay: 40;
+  --ph-global-z-header: 30;
+  --ph-semantic-color-surface: #ffffff;
+  --ph-semantic-color-surface-alt: #f8fafc;
+  --ph-semantic-color-action-primary-text: #ffffff;
+  --ph-semantic-color-status-success-bg100: #DCFCE7;
+  --ph-semantic-color-status-success-border200: #BBF7D0;
+  --ph-semantic-color-status-success-text700: #15803D;
+  --ph-semantic-color-status-warning-bg100: #FEF3C7;
+  --ph-semantic-color-status-warning-border200: #FDE68A;
+  --ph-semantic-color-status-warning-text700: #B45309;
+  --ph-semantic-color-status-error-bg100: #FEE2E2;
+  --ph-semantic-color-status-error-border200: #FECACA;
+  --ph-semantic-color-status-error-text700: #B91C1C;
+  --ph-semantic-color-border: var(--ph-global-color-slate-200);
+  --ph-semantic-color-text-primary: var(--ph-global-color-slate-900);
+  --ph-semantic-color-text-secondary: var(--ph-global-color-slate-500);
+  --ph-semantic-color-action-primary-bg: var(--ph-global-color-brand);
+}

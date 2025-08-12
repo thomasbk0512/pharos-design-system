@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHAROS Semantic Token Pipeline Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: 'var(--ph-global-color-brand)',
+                            50: 'var(--ph-global-color-brand50)'
+                        },
+                        'status-success-100': 'var(--ph-semantic-color-status-success-bg100)',
+                        'status-success-200': 'var(--ph-semantic-color-status-success-border200)',
+                        'status-success-700': 'var(--ph-semantic-color-status-success-text700)',
+                        'status-warning-100': 'var(--ph-semantic-color-status-warning-bg100)',
+                        'status-warning-200': 'var(--ph-semantic-color-status-warning-border200)',
+                        'status-warning-700': 'var(--ph-semantic-color-status-warning-text700)',
+                        'status-error-100': 'var(--ph-semantic-color-status-error-bg100)',
+                        'status-error-200': 'var(--ph-semantic-color-status-error-border200)',
+                        'status-error-700': 'var(--ph-semantic-color-status-error-text700)'
+                    },
+                    spacing: {
+                        0: '0px',
+                        1: 'var(--ph-global-spacing-4)',
+                        2: 'var(--ph-global-spacing-8)',
+                        3: 'var(--ph-global-spacing-12)',
+                        4: 'var(--ph-global-spacing-16)',
+                        5: 'var(--ph-global-spacing-24)',
+                        6: 'var(--ph-global-spacing-32)'
+                    },
+                    boxShadow: {
+                        pharos: 'var(--ph-global-shadow-pharos)',
+                        'pharos-sm': 'var(--ph-global-shadow-pharosSm)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="src/lib/pharos/semantic.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto space-y-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">PHAROS Semantic Token Pipeline</h1>
+            <p class="text-xl text-slate-600">Testing CSS variables from Style Dictionary</p>
+        </header>
+
+        <!-- Global Colors Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Global Colors (CSS Variables)</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-brand mb-2"></div>
+                    <div class="text-sm font-medium">Brand</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-color-brand)</div>
+                </div>
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-brand-50 border border-slate-200 mb-2"></div>
+                    <div class="text-sm font-medium">Brand 50</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-color-brand50)</div>
+                </div>
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-slate-100 mb-2"></div>
+                    <div class="text-sm font-medium">Slate 100</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-color-slate-100)</div>
+                </div>
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-slate-200 mb-2"></div>
+                    <div class="text-sm font-medium">Slate 200</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-color-slate-200)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status Colors Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Status Colors (Semantic CSS Variables)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-status-success-100 border border-status-success-200 mb-2"></div>
+                    <div class="text-sm font-medium text-status-success-700">Success</div>
+                    <div class="text-xs text-slate-500">bg100, border200, text700</div>
+                </div>
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-status-warning-100 border border-status-warning-200 mb-2"></div>
+                    <div class="text-sm font-medium text-status-warning-700">Warning</div>
+                    <div class="text-xs text-slate-500">bg100, border200, text700</div>
+                </div>
+                <div class="text-center">
+                    <div class="h-20 w-full rounded-xl bg-status-error-100 border border-status-error-200 mb-2"></div>
+                    <div class="text-sm font-medium text-status-error-700">Error</div>
+                    <div class="text-xs text-slate-500">bg100, border200, text700</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">8px Baseline Spacing (CSS Variables)</h2>
+            <div class="flex items-end gap-2">
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: var(--ph-global-spacing-4)"></div>
+                    <div class="text-xs mt-1">4px</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-spacing-4)</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: var(--ph-global-spacing-8)"></div>
+                    <div class="text-xs mt-1">8px</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-spacing-8)</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: var(--ph-global-spacing-12)"></div>
+                    <div class="text-xs mt-1">12px</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-spacing-12)</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: var(--ph-global-spacing-16)"></div>
+                    <div class="text-xs mt-1">16px</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-spacing-16)</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: var(--ph-global-spacing-24)"></div>
+                    <div class="text-xs mt-1">24px</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-spacing-24)</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: var(--ph-global-spacing-32)"></div>
+                    <div class="text-xs mt-1">32px</div>
+                    <div class="text-xs text-slate-500">var(--ph-global-spacing-32)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shadows Test -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-pharos">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">shadow-pharos</h3>
+                <p class="text-slate-600">var(--ph-global-shadow-pharos)</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-pharos-sm">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">shadow-pharos-sm</h3>
+                <p class="text-slate-600">var(--ph-global-shadow-pharosSm)</p>
+            </div>
+        </section>
+
+        <!-- Status Chips Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Status Chips (Using CSS Variables)</h2>
+            <div class="flex gap-2 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-status-success-100 text-status-success-700 border border-status-success-200 rounded-full">
+                    <div class="w-2 h-2 bg-status-success-700 rounded-full"></div>
+                    Success
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-status-warning-100 text-status-warning-700 border border-status-warning-200 rounded-full">
+                    <div class="w-2 h-2 bg-status-warning-700 rounded-full"></div>
+                    Warning
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-status-error-100 text-status-error-700 border border-status-error-200 rounded-full">
+                    <div class="w-2 h-2 bg-status-error-700 rounded-full"></div>
+                    Error
+                </span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

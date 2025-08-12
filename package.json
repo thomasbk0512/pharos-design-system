@@ -1,0 +1,46 @@
+{
+  "name": "design-system",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Design system integrated with Figma MCP server",
+  "main": "index.js",
+  "scripts": {
+    "tokens:build": "npx style-dictionary build --config style-dictionary.config.js",
+    "tokens:watch": "npx style-dictionary build --config style-dictionary.config.js --watch",
+    "predev": "npm run tokens:build",
+    "prebuild": "npm run tokens:build",
+    "lint:tokens": "node scripts/lint-guards.js && node scripts/validate-tokens.js",
+    "prepare": "husky install",
+    "test:e2e": "playwright test",
+    "test:update": "playwright test --update-snapshots"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "chalk": "^4.1.2",
+    "clsx": "^2.0.0",
+    "fs-extra": "^11.1.1",
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.8.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.9.0",
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "chokidar": "^3.5.3",
+    "husky": "^9.0.0",
+    "nodemon": "^3.0.1",
+    "style-dictionary": "^5.0.1"
+  },
+  "keywords": [
+    "design-system",
+    "figma",
+    "mcp",
+    "tokens"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

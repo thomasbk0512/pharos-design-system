@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHAROS Design System Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { DEFAULT: '#3538CD', 50: '#E5E7FF' },
+                        status: {
+                            success: { 100: '#DCFCE7', 200: '#BBF7D0', 700: '#15803D' },
+                            warning: { 100: '#FEF3C7', 200: '#FDE68A', 700: '#B45309' },
+                            error:   { 100: '#FEE2E2', 200: '#FECACA', 700: '#B91C1C' },
+                        },
+                    },
+                    spacing: {
+                        0: '0px', 1: '4px', 2: '8px', 3: '12px', 4: '16px', 5: '24px', 6: '32px',
+                    },
+                    boxShadow: {
+                        pharos: '0 1px 2px rgba(16,24,40,0.04)',
+                        'pharos-sm': '0 1px 1px rgba(16,24,40,0.03)',
+                    },
+                },
+            },
+        }
+    </script>
+    <link href="tokens/css/pharos-design-system.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto space-y-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">PHAROS Design System</h1>
+            <p class="text-xl text-slate-600">Light UI — Calm, readable, predictable</p>
+        </header>
+
+        <!-- Status Chips Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Status Chips (gap-2 container)</h2>
+            <div class="flex gap-2 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-status-success-100 text-status-success-700 border border-status-success-200 rounded-full">
+                    <div class="w-2 h-2 bg-status-success-700 rounded-full"></div>
+                    Success
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-status-warning-100 text-status-warning-700 border border-status-warning-200 rounded-full">
+                    <div class="w-2 h-2 bg-status-warning-700 rounded-full"></div>
+                    Warning
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-status-error-100 text-status-error-700 border border-status-error-200 rounded-full">
+                    <div class="w-2 h-2 bg-status-error-700 rounded-full"></div>
+                    Error
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-medium bg-slate-100 text-slate-700 border border-slate-200 rounded-full">
+                    <div class="w-2 h-2 bg-slate-700 rounded-full"></div>
+                    Neutral
+                </span>
+            </div>
+        </section>
+
+        <!-- Cards Test -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-pharos">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">shadow-pharos</h3>
+                <p class="text-slate-600">Card with primary elevation</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-pharos-sm">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2">shadow-pharos-sm</h3>
+                <p class="text-slate-600">Card with subtle elevation</p>
+            </div>
+        </section>
+
+        <!-- Spacing Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">8px Baseline Spacing</h2>
+            <div class="flex items-end gap-2">
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: 4px"></div>
+                    <div class="text-xs mt-1">4px</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: 8px"></div>
+                    <div class="text-xs mt-1">8px</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: 12px"></div>
+                    <div class="text-xs mt-1">12px</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: 16px"></div>
+                    <div class="text-xs mt-1">16px</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: 24px"></div>
+                    <div class="text-xs mt-1">24px</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-6 bg-brand rounded" style="height: 32px"></div>
+                    <div class="text-xs mt-1">32px</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stepper Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Stepper Chip Pattern</h2>
+            <div class="flex items-center gap-3 border border-slate-200 rounded-2xl p-3 bg-white">
+                <!-- Step 1: Active -->
+                <div class="inline-flex items-center gap-2 border border-brand rounded-xl px-2.5 py-1 bg-brand-50">
+                    <div class="w-6 h-6 bg-brand-50 border-2 border-brand rounded-full grid place-items-center">
+                        <div class="w-2 h-2 bg-brand rounded-full"></div>
+                    </div>
+                    <span class="text-sm text-slate-900 font-medium">Goal</span>
+                </div>
+                
+                <!-- Separator -->
+                <div class="w-px h-6 bg-slate-200 mx-2"></div>
+                
+                <!-- Step 2: Pending -->
+                <div class="inline-flex items-center gap-2 border border-slate-200 rounded-xl px-2.5 py-1 bg-white">
+                    <div class="w-6 h-6 bg-white border-2 border-slate-200 rounded-full grid place-items-center">
+                        <span class="text-[10px] text-slate-500 font-medium">2</span>
+                    </div>
+                    <span class="text-sm text-slate-500">Composer</span>
+                </div>
+                
+                <!-- Separator -->
+                <div class="w-px h-6 bg-slate-200 mx-2"></div>
+                
+                <!-- Step 3: Pending -->
+                <div class="inline-flex items-center gap-2 border border-slate-200 rounded-xl px-2.5 py-1 bg-white">
+                    <div class="w-6 h-6 bg-white border-2 border-slate-200 rounded-full grid place-items-center">
+                        <span class="text-[10px] text-slate-500 font-medium">3</span>
+                    </div>
+                    <span class="text-sm text-slate-500">Deploy</span>
+                </div>
+                
+                <!-- Separator -->
+                <div class="w-px h-6 bg-slate-200 mx-2"></div>
+                
+                <!-- Step 4: Pending -->
+                <div class="inline-flex items-center gap-2 border border-slate-200 rounded-xl px-2.5 py-1 bg-white">
+                    <div class="w-6 h-6 bg-white border-2 border-slate-200 rounded-full grid place-items-center">
+                        <span class="text-[10px] text-slate-500 font-medium">4</span>
+                    </div>
+                    <span class="text-sm text-slate-500">Monitor</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metric Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Metric Components (No Decorative Bullets)</h2>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="rounded-xl border border-slate-200 p-3">
+                    <div class="text-sm text-slate-500">30d Return</div>
+                    <div class="text-2xl font-semibold mt-1">+3.4%</div>
+                </div>
+                <div class="rounded-xl border border-slate-200 p-3">
+                    <div class="text-sm text-slate-500">Max Drawdown</div>
+                    <div class="text-2xl font-semibold mt-1">-1.2%</div>
+                </div>
+                <div class="rounded-xl border border-slate-200 p-3">
+                    <div class="text-sm text-slate-500">Confidence</div>
+                    <div class="text-2xl font-semibold mt-1">High</div>
+                    <div class="text-xs text-slate-500 mt-1">Based on historical data</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

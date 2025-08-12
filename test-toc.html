@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHAROS Table of Contents Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: 'var(--ph-global-color-brand)',
+                            50: 'var(--ph-global-color-brand50)'
+                        },
+                        'status-success-100': 'var(--ph-semantic-color-status-success-bg100)',
+                        'status-success-200': 'var(--ph-semantic-color-status-success-border200)',
+                        'status-success-700': 'var(--ph-semantic-color-status-success-text700)',
+                        'status-warning-100': 'var(--ph-semantic-color-status-warning-bg100)',
+                        'status-warning-200': 'var(--ph-semantic-color-status-warning-border200)',
+                        'status-warning-700': 'var(--ph-semantic-color-status-warning-text700)',
+                        'status-error-100': 'var(--ph-semantic-color-status-error-bg100)',
+                        'status-error-200': 'var(--ph-semantic-color-status-error-border200)',
+                        'status-error-700': 'var(--ph-semantic-color-status-error-text700)'
+                    },
+                    spacing: {
+                        0: '0px',
+                        1: 'var(--ph-global-spacing-4)',
+                        2: 'var(--ph-global-spacing-8)',
+                        3: 'var(--ph-global-spacing-12)',
+                        4: 'var(--ph-global-spacing-16)',
+                        5: 'var(--ph-global-spacing-24)',
+                        6: 'var(--ph-global-spacing-32)'
+                    },
+                    boxShadow: {
+                        pharos: 'var(--ph-global-shadow-pharos)',
+                        'pharos-sm': 'var(--ph-global-shadow-pharosSm)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="src/lib/pharos/semantic.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto space-y-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">PHAROS Table of Contents</h1>
+            <p class="text-xl text-slate-600">Testing Sticky Left-Rail Navigation</p>
+        </header>
+
+        <!-- Layout Test -->
+        <div class="lg:grid lg:grid-cols-[260px_1fr] lg:gap-6">
+            <!-- Left Rail: Table of Contents -->
+            <div class="hidden lg:block">
+                <nav class="sticky top-6 rounded-2xl border border-slate-200 bg-white shadow-pharos-sm p-3">
+                    <div class="grid gap-2">
+                        <a href="#brand-status" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Brand & Status</a>
+                        <a href="#typography" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Typography</a>
+                        <a href="#buttons" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Buttons</a>
+                        <a href="#inputs" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Inputs</a>
+                        <a href="#metric-stepper" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Metric & Stepper</a>
+                        <a href="#cards-elevation" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Cards & Elevation</a>
+                        <a href="#spacing-radius" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Spacing & Radius</a>
+                        <a href="#foundations-layout" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Layout & Breakpoints</a>
+                        <a href="#foundations-motion" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Motion</a>
+                        <a href="#foundations-density" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Density</a>
+                        <a href="#foundations-zindex" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Z-Index</a>
+                        <a href="#foundations-dataviz" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Data-Viz</a>
+                        <a href="#controls" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Controls</a>
+                        <a href="#tabs" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Tabs</a>
+                        <a href="#feedback" class="text-sm text-sm text-slate-600 hover:text-slate-900 transition-colors">Feedback</a>
+                        <a href="#table-pagination" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Table & Pagination</a>
+                        <a href="#empty-tags" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Empty States & Tags</a>
+                        <a href="#governance" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">Governance</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Right Column: Main Content -->
+            <div class="space-y-8">
+                <!-- Test Sections -->
+                <section id="brand-status" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Brand & Status</h2>
+                    <p class="text-slate-600">This section tests the Brand & Status navigation link.</p>
+                </section>
+
+                <section id="typography" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Typography</h2>
+                    <p class="text-slate-600">This section tests the Typography navigation link.</p>
+                </section>
+
+                <section id="buttons" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Buttons</h2>
+                    <p class="text-slate-600">This section tests the Buttons navigation link.</p>
+                </section>
+
+                <section id="inputs" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Inputs</h2>
+                    <p class="text-slate-600">This section tests the Inputs navigation link.</p>
+                </section>
+
+                <section id="metric-stepper" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Metric & Stepper</h2>
+                    <p class="text-slate-600">This section tests the Metric & Stepper navigation link.</p>
+                </section>
+
+                <section id="cards-elevation" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Cards & Elevation</h2>
+                    <p class="text-slate-600">This section tests the Cards & Elevation navigation link.</p>
+                </section>
+
+                <section id="spacing-radius" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Spacing & Radius</h2>
+                    <p class="text-slate-600">This section tests the Spacing & Radius navigation link.</p>
+                </section>
+
+                <section id="foundations-layout" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Layout & Breakpoints</h2>
+                    <p class="text-slate-600">This section tests the Layout & Breakpoints navigation link.</p>
+                </section>
+
+                <section id="foundations-motion" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Motion</h2>
+                    <p class="text-slate-600">This section tests the Motion navigation link.</p>
+                </section>
+
+                <section id="foundations-density" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Density</h2>
+                    <p class="text-slate-600">This section tests the Density navigation link.</p>
+                </section>
+
+                <section id="foundations-zindex" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Z-Index</h2>
+                    <p class="text-slate-600">This section tests the Z-Index navigation link.</p>
+                </section>
+
+                <section id="foundations-dataviz" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Data-Viz</h2>
+                    <p class="text-slate-600">This section tests the Data-Viz navigation link.</p>
+                </section>
+
+                <section id="controls" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Controls</h2>
+                    <p class="text-slate-600">This section tests the Controls navigation link.</p>
+                </section>
+
+                <section id="tabs" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Tabs</h2>
+                    <p class="text-slate-600">This section tests the Tabs navigation link.</p>
+                </section>
+
+                <section id="feedback" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Feedback</h2>
+                    <p class="text-slate-600">This section tests the Feedback navigation link.</p>
+                </section>
+
+                <section id="table-pagination" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Table & Pagination</h2>
+                    <p class="text-slate-600">This section tests the Table & Pagination navigation link.</p>
+                </section>
+
+                <section id="empty-tags" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Empty States & Tags</h2>
+                    <p class="text-slate-600">This section tests the Empty States & Tags navigation link.</p>
+                </section>
+
+                <section id="governance" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+                    <h2 class="text-2xl font-semibold text-slate-800 mb-4">Governance</h2>
+                    <p class="text-slate-600">This section tests the Governance navigation link.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

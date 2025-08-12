@@ -1,0 +1,70 @@
+{
+  "global": {
+    "color": {
+      "brand": { "$value": "#3538CD" },
+      "brand50": { "$value": "#E5E7FF" },
+      "slate": {
+        "100": { "$value": "#f1f5f9" },
+        "200": { "$value": "#e2e8f0" },
+        "500": { "$value": "#64748b" },
+        "800": { "$value": "#1f2937" },
+        "900": { "$value": "#0f172a" }
+      }
+    },
+    "spacing": {
+      "4": { "$value": "4px" },
+      "8": { "$value": "8px" },
+      "12": { "$value": "12px" },
+      "16": { "$value": "16px" },
+      "24": { "$value": "24px" },
+      "32": { "$value": "32px" }
+    },
+    "radius": {
+      "control": { "$value": "12px" },
+      "card": { "$value": "16px" }
+    },
+    "shadow": {
+      "pharos":   { "$value": "0 1px 2px rgba(16,24,40,0.04)" },
+      "pharosSm": { "$value": "0 1px 1px rgba(16,24,40,0.03)" }
+    },
+    "motion": {
+      "ease": { "$value": "cubic-bezier(.2,.8,.2,1)" },
+      "fast": { "$value": "120ms" },
+      "base": { "$value": "150ms" },
+      "slow": { "$value": "240ms" }
+    },
+    "z": {
+      "popover": { "$value": 50 },
+      "overlay": { "$value": 40 },
+      "header":  { "$value": 30 }
+    }
+  },
+  "semantic": {
+    "color": {
+      "surface":        { "$value": "#ffffff" },
+      "surfaceAlt":     { "$value": "#f8fafc" },
+      "border":         { "$value": "{global.color.slate.200}" },
+      "textPrimary":    { "$value": "{global.color.slate.900}" },
+      "textSecondary":  { "$value": "{global.color.slate.500}" },
+      "actionPrimaryBg":   { "$value": "{global.color.brand}" },
+      "actionPrimaryText": { "$value": "#ffffff" },
+      "status": {
+        "success": {
+          "bg100":    { "$value": "#DCFCE7" },
+          "border200":{ "$value": "#BBF7D0" },
+          "text700":  { "$value": "#15803D" }
+        },
+        "warning": {
+          "bg100":    { "$value": "#FEF3C7" },
+          "border200":{ "$value": "#FDE68A" },
+          "text700":  { "$value": "#B45309" }
+        },
+        "error": {
+          "bg100":    { "$value": "#FEE2E2" },
+          "border200":{ "$value": "#FECACA" },
+          "text700":  { "$value": "#B91C1C" }
+        }
+      }
+    }
+  }
+}
