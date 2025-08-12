@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '../../lib/utils';
-import { Button } from './Button';
+import { PharosButton } from './Button';
 import { Settings, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
@@ -62,11 +62,11 @@ export function Header({
         
         {/* Right side actions */}
         <div className="ml-auto flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="hidden sm:flex">
+          <PharosButton variant="ghost" className="hidden sm:flex px-3 py-2 text-sm">
             <Settings className="h-4 w-4 mr-2" />
             Settings
-          </Button>
-          <Button size="sm">Connect wallet</Button>
+          </PharosButton>
+          <PharosButton className="px-3 py-2 text-sm">Connect wallet</PharosButton>
         </div>
       </div>
     </header>

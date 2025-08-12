@@ -230,7 +230,14 @@ export default function Page() {
       {/* =============================== */}
       <DocsSection id="tabs" title="Tabs" subtitle="Static specimen; interactions disabled in docs.">
         <SpecimenCard>
-          <PharosTabs value="two" />
+          <PharosTabs 
+            tabs={[
+              { id: 'one', label: 'Overview', content: 'Overview content (static)' },
+              { id: 'two', label: 'Alerts', content: 'Alerts content (static)' },
+              { id: 'three', label: 'Performance', content: 'Performance content (static)' }
+            ]}
+            defaultTab="two"
+          />
         </SpecimenCard>
       </DocsSection>
 

@@ -1,17 +1,25 @@
 'use client'
 import * as React from 'react'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Label } from '@/components/ui/label'
 
-export function PharosRadioGroup({ options, value, disabled }: { options: { id: string; label: string }[]; value?: string; disabled?: boolean }) {
+export function PharosRadioGroup({ options, value, disabled, name }: { options: { id: string; label: string }[]; value?: string; disabled?: boolean; name?: string }) {
   return (
-    <RadioGroup value={value} className="grid gap-3">
+    <div className="grid gap-3">
       {options.map(o => (
         <div key={o.id} className="flex items-center gap-2">
-          <RadioGroupItem id={o.id} value={o.id} disabled={disabled} className="focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" />
-          <Label htmlFor={o.id} className={disabled ? 'text-slate-400' : 'text-slate-700'}>{o.label}</Label>
+          <input
+            type="radio"
+            id={o.id}
+            name={name || 'radio-group'}
+            value={o.id}
+            checked={value === o.id}
+            disabled={disabled}
+            className="w-4 h-4 text-brand bg-white border border-slate-300 focus:ring-2 focus:ring-brand focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          />
+          <label htmlFor={o.id} className={`text-sm cursor-pointer ${disabled ? 'text-slate-400' : 'text-slate-700'}`}>
+            {o.label}
+          </label>
         </div>
       ))}
-    </RadioGroup>
+    </div>
   )
 }

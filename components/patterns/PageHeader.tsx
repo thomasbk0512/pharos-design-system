@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { PharosButton } from '@/components/pharos/Button'
+import { PharosButton } from '../pharos/Button'
 
 export function PageHeader() {
   return (

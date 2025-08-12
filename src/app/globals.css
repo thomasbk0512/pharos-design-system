@@ -3,4 +3,7 @@
 @tailwind utilities;
 
 /* Import PHAROS semantic CSS variables */
-@import '@/lib/pharos/semantic.css';
+@import '../lib/pharos/semantic.css';
+
+/* Ensure anchors don't tuck under sticky UI */
+[data-testid^="section-"] { scroll-margin-top: 24px; }

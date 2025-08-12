@@ -8,11 +8,10 @@ export default defineConfig({
     colorScheme: 'light',
     ignoreHTTPSErrors: true,
   },
-  // webServer disabled for design system - tests run against static files
-  // webServer: {
-  //   command: 'npm run build && npm run start',
-  //   url: 'http://localhost:3000/design-system',
-  //   reuseExistingServer: !process.env.CI,
-  //   timeout: 120_000,
-  // },
+  webServer: {
+    command: 'npm run build && npm run start',
+    url: 'http://localhost:3000/design-system',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120_000,
+  },
 })

@@ -1,18 +1,35 @@
 'use client'
 import * as React from 'react'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 
-export function PharosTabs({ value = 'one' }: { value?: string }) {
+interface Tab {
+  id: string
+  label: string
+  content: React.ReactNode
+}
+
+export function PharosTabs({ tabs, defaultTab }: { tabs: Tab[]; defaultTab?: string }) {
+  const [activeTab, setActiveTab] = React.useState(defaultTab || tabs[0]?.id)
+
   return (
-    <Tabs value={value} className="pointer-events-none">
-      <TabsList className="rounded-xl">
-        <TabsTrigger value="one" className="rounded-lg">Overview</TabsTrigger>
-        <TabsTrigger value="two" className="rounded-lg">Alerts</TabsTrigger>
-        <TabsTrigger value="three" className="rounded-lg">Performance</TabsTrigger>
-      </TabsList>
-      <TabsContent value="one" className="mt-3 text-sm text-slate-700">Overview content (static)</TabsContent>
-      <TabsContent value="two" className="mt-3 text-sm text-slate-700">Alerts content (static)</TabsContent>
-      <TabsContent value="three" className="mt-3 text-sm text-slate-700">Performance content (static)</TabsContent>
-    </Tabs>
+    <div className="w-full">
+      <div className="flex border-b border-slate-200">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === tab.id
+                ? 'border-brand text-brand'
+                : 'border-transparent text-slate-600 hover:text-slate-900 hover:border-slate-300'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      <div className="mt-4">
+        {tabs.find(tab => tab.id === activeTab)?.content}
+      </div>
+    </div>
   )
 }

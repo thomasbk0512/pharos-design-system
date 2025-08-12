@@ -2,20 +2,25 @@
 // Calm, readable, predictable. Light UI only.
 
 // Core Components
-export { Button, ButtonPrimary, ButtonSecondary, ButtonGhost, ButtonDestructive } from './Button';
-export { Card, CardHeader, CardContent, CardTitle, CardFooter } from './Card';
-export { LabeledInput, LabeledNumberInput, LabeledTextarea } from './LabeledInput';
-export { Badge, BadgeNeutral, BadgeSuccess, BadgeWarning, BadgeError, StatusBadge } from './Badge';
-export { Metric, MetricGrid, PerformanceMetric, CurrencyMetric } from './Metric';
+export { PharosButton } from './Button';
+export { PharosCard, PharosCardHeader, PharosCardContent, PharosCardTitle } from './Card';
+export { LabeledInput } from './LabeledInput';
+export { StatusChip } from './Badge';
+export { Metric } from './Metric';
 export { AlertItem, AlertList, ActionableAlert } from './AlertItem';
-export { Stepper, VerticalStepper, ProgressStepper } from './Stepper';
+export { Stepper } from './Stepper';
+
+// Form Controls
+export { PharosCheckbox } from './Checkbox';
+export { PharosRadioGroup } from './Radio';
+export { PharosSwitch } from './Switch';
 
 // Navigation & Layout
-export { Tabs, TabsList, TabsTrigger, TabsContent, SimpleTabs } from './Tabs';
-export { Header, Page, PageHeader, PageSection, SidebarLayout, MobileSidebar } from './Layout';
+export { PharosTabs } from './Tabs';
+export { Tag } from './Tag';
 
 // Charts & Data Visualization
-export { PerfVsHodl, AreaChartBlock, BarChartBlock, ChartWrapper } from './ChartBlock';
+export { PerfVsHodl } from './ChartBlock';
 
 // Re-export utility function
 export { cn } from '../../lib/utils';

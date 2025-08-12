@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
-import { PharosCard } from '@/components/pharos/Card'
-import { PharosButton } from '@/components/pharos/Button'
+import { PharosCard } from '../pharos/Card'
+import { PharosButton } from '../pharos/Button'
 
 export function CardVariants() {
   return (

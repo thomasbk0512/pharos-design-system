@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '../../lib/utils';
-import { Bell, TriangleAlert, AlertCircle } from 'lucide-react';
-import { Badge } from './Badge';
+import { Bell, Triangle, AlertCircle } from 'lucide-react';
+import { StatusChip } from './Badge';
 
 type AlertSeverity = 'low' | 'medium' | 'high';
 
@@ -36,7 +36,7 @@ export function AlertItem({
       borderColor: 'border-amber-200'
     },
     high: {
-      icon: <TriangleAlert className="h-4 w-4 text-red-600" />,
+      icon: <Triangle className="h-4 w-4 text-red-600" />,
       tone: 'error' as const,
       borderColor: 'border-red-200'
     }
@@ -71,9 +71,9 @@ export function AlertItem({
       </div>
       
       <div className="flex items-center gap-2 ml-4">
-        <Badge tone={config.tone} size="sm">
+        <StatusChip tone={config.tone} size="sm">
           {severity[0].toUpperCase() + severity.slice(1)}
-        </Badge>
+        </StatusChip>
         
         {onDismiss && (
           <button
@@ -132,8 +132,8 @@ export function ActionableAlert({
     <div className="rounded-xl border border-slate-200 p-4 bg-white">
       <div className="flex items-start gap-3 mb-4">
         <div className="mt-0.5">
-          {severity === 'high' ? (
-            <TriangleAlert className="h-4 w-4 text-red-600" />
+          {          severity === 'high' ? (
+            <Triangle className="h-4 w-4 text-red-600" />
           ) : severity === 'medium' ? (
             <AlertCircle className="h-4 w-4 text-amber-600" />
           ) : (
@@ -155,9 +155,9 @@ export function ActionableAlert({
       </div>
       
       <div className="flex items-center justify-between">
-        <Badge tone={severity === 'high' ? 'error' : severity === 'medium' ? 'warning' : 'neutral'}>
+        <StatusChip tone={severity === 'high' ? 'error' : severity === 'medium' ? 'warning' : 'neutral'}>
           {severity[0].toUpperCase() + severity.slice(1)}
-        </Badge>
+        </StatusChip>
         
         <button
           onClick={onAction}

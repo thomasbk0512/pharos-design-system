@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { Tag } from '@/components/pharos/Tag'
+import { Tag } from '../pharos/Tag'
 import { ChevronDown } from 'lucide-react'
 
 export function ToolbarFilters() {
