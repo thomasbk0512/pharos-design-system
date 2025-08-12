@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHAROS Phase 2 Foundations Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: 'var(--ph-global-color-brand)',
+                            50: 'var(--ph-global-color-brand50)'
+                        },
+                        'status-success-100': 'var(--ph-semantic-color-status-success-bg100)',
+                        'status-success-200': 'var(--ph-semantic-color-status-success-border200)',
+                        'status-success-700': 'var(--ph-semantic-color-status-success-text700)',
+                        'status-warning-100': 'var(--ph-semantic-color-status-warning-bg100)',
+                        'status-warning-200': 'var(--ph-semantic-color-status-warning-border200)',
+                        'status-warning-700': 'var(--ph-semantic-color-status-warning-text700)',
+                        'status-error-100': 'var(--ph-semantic-color-status-error-bg100)',
+                        'status-error-200': 'var(--ph-semantic-color-status-error-border200)',
+                        'status-error-700': 'var(--ph-semantic-color-status-error-text700)'
+                    },
+                    spacing: {
+                        0: '0px',
+                        1: 'var(--ph-global-spacing-4)',
+                        2: 'var(--ph-global-spacing-8)',
+                        3: 'var(--ph-global-spacing-12)',
+                        4: 'var(--ph-global-spacing-16)',
+                        5: 'var(--ph-global-spacing-24)',
+                        6: 'var(--ph-global-spacing-32)'
+                    },
+                    boxShadow: {
+                        pharos: 'var(--ph-global-shadow-pharos)',
+                        'pharos-sm': 'var(--ph-global-shadow-pharosSm)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="src/lib/pharos/semantic.css" rel="stylesheet">
+    <style>
+        /* Grid overlay simulation */
+        .grid-overlay {
+            background-image: repeating-linear-gradient(
+                to right,
+                color-mix(in srgb, var(--ph-global-color-slate-900) 6%, transparent) 0,
+                color-mix(in srgb, var(--ph-global-color-slate-900) 6%, transparent) calc(8.333% - 1px),
+                transparent calc(8.333% - 1px),
+                transparent 8.333%
+            );
+        }
+        
+        /* Density helpers */
+        .ph-density-regular .ph-control { padding: var(--ph-global-spacing-12); }
+        .ph-density-regular .ph-card { padding: var(--ph-global-spacing-16); }
+        .ph-density-compact .ph-control { padding: var(--ph-global-spacing-8); }
+        .ph-density-compact .ph-card { padding: var(--ph-global-spacing-12); }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto space-y-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">PHAROS Phase 2 Foundations</h1>
+            <p class="text-xl text-slate-600">Testing Layout, Motion, Density, Z-Index & Data-Viz</p>
+        </header>
+
+        <!-- Layout & Breakpoints Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Layout & Breakpoints</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <div class="text-sm font-medium mb-2">12‑Col Grid (Desktop)</div>
+                    <div class="relative rounded-2xl border border-slate-200 shadow-pharos-sm overflow-hidden bg-white">
+                        <div class="relative p-4">
+                            <div class="grid grid-cols-12 gap-3">
+                                <div class="col-span-4 rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">4 cols</div>
+                                <div class="col-span-8 rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">8 cols</div>
+                                <div class="col-span-12 rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">12 cols</div>
+                            </div>
+                        </div>
+                        <div aria-hidden class="pointer-events-none absolute inset-0 grid-overlay"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="text-sm font-medium mb-2">Container Roles</div>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                            <div className="font-medium mb-1">Widths</div>
+                            <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+                                <li>sm: 640px</li>
+                                <li>md: 768px</li>
+                                <li>lg: 1024px</li>
+                                <li>xl: 1280px</li>
+                                <li>2xl: 1536px</li>
+                            </ul>
+                        </div>
+                        <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                            <div className="font-medium mb-1">Gutters & grid</div>
+                            <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+                                <li>Page gutters: px-4 (mobile), wider on desktop</li>
+                                <li>Grid: 12 columns, gap-3 (12px)</li>
+                                <li>Cards avoid nested borders; use single boundary</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Motion Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Motion Tokens</h2>
+            <div class="grid md:grid-cols-2 gap-3 text-sm">
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4 space-y-1">
+                    <div><code>--ph-global-motion-fast</code> = 120ms</div>
+                    <div><code>--ph-global-motion-base</code> = 150ms</div>
+                    <div><code>--ph-global-motion-slow</code> = 240ms</div>
+                    <div><code>--ph-global-motion-ease</code> = cubic-bezier(.2,.8,.2,1)</div>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4 space-y-1">
+                    <div class="font-medium mb-1">Canonical transitions</div>
+                    <pre class="text-xs bg-slate-50 rounded-xl p-3 overflow-auto"><code>/* Hover/press */
+transition: all var(--ph-global-motion-base) var(--ph-global-motion-ease);
+
+/* Enter/exit */
+opacity: 0; transform: translateY(4px);
+transition: opacity var(--ph-global-motion-base) var(--ph-global-motion-ease),
+            transform var(--ph-global-motion-base) var(--ph-global-motion-ease);
+
+/* Tooltip fade (timing only) */
+transition: opacity var(--ph-global-motion-fast) var(--ph-global-motion-ease);</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Density Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Density (Regular vs Compact)</h2>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="ph-density-regular">
+                    <div class="text-sm font-medium mb-2">Regular</div>
+                    <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                        <div class="grid gap-3">
+                            <div class="ph-control rounded-xl border border-slate-200 p-3">Strategy name input</div>
+                            <div class="ph-control rounded-xl border border-transparent p-3">Save button</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ph-density-compact">
+                    <div class="text-sm font-medium mb-2">Compact</div>
+                    <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                        <div class="grid gap-3">
+                            <div class="ph-control rounded-xl border border-slate-200 p-2">Strategy name input</div>
+                            <div class="ph-control rounded-xl border border-transparent p-2">Save button</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Z-Index Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Z-Index Layer Stack</h2>
+            <div class="grid md:grid-cols-3 gap-3 text-sm">
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                    <div class="font-medium">Header</div>
+                    <div class="text-slate-600">z = 30</div>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                    <div class="font-medium">Overlay</div>
+                    <div class="text-slate-600">z = 40</div>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                    <div class="font-medium">Popover</div>
+                    <div class="text-slate-600">z = 50</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data-Viz Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Data-Viz (Brand vs Baseline)</h2>
+            <div class="grid md:grid-cols-2 gap-3">
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                    <div class="text-sm font-medium mb-2">Series palette</div>
+                    <div class="grid grid-cols-5 gap-3 items-end">
+                        <div class="text-xs text-slate-600 col-span-5">Strategy & baseline</div>
+                        <div class="h-10 rounded-xl bg-brand"></div>
+                        <div class="h-10 rounded-xl bg-slate-500"></div>
+                        <div class="h-10 rounded-xl bg-slate-300"></div>
+                        <div class="h-10 rounded-xl bg-slate-600"></div>
+                        <div class="h-10 rounded-xl bg-slate-700"></div>
+                    </div>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white shadow-pharos p-4">
+                    <div class="font-medium mb-2">Recharts theme (static snippet)</div>
+                    <pre class="text-xs bg-slate-50 rounded-xl p-3 overflow-auto"><code>// Line/Area only
+&lt;Line dataKey="vault" stroke="var(--ph-global-color-brand)" /&gt;
+&lt;Line dataKey="hodl" stroke="rgb(100 116 139)" /&gt; {/* slate-500 */}
+&lt;CartesianGrid strokeDasharray="3 3" opacity={0.4} /&gt;
+&lt;Tooltip /&gt; // concise labels</code></pre>
+                    <div class="mt-2 text-xs text-slate-600">Do: line/area only; limit series; neutral baselines. Don't: pies, 3D, rainbow palettes, low-contrast tints.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

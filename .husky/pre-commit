@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔒 PHAROS pre-commit: tokens + lint + tests"
+npm run tokens:build || { echo "Tokens build failed"; exit 1; }
+npm run lint:tokens || { echo "Token lint failed"; exit 1; }
+npm run test:e2e -- --reporter=list || { 
+  echo "Tests failed. If this is an intended visual change, run: npm run test:update"
+  exit 1
+}

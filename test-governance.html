@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHAROS Phase 5 Governance Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: 'var(--ph-global-color-brand)',
+                            50: 'var(--ph-global-color-brand50)'
+                        },
+                        'status-success-100': 'var(--ph-semantic-color-status-success-bg100)',
+                        'status-success-200': 'var(--ph-semantic-color-status-success-border200)',
+                        'status-success-700': 'var(--ph-semantic-color-status-success-text700)',
+                        'status-warning-100': 'var(--ph-semantic-color-status-warning-bg100)',
+                        'status-warning-200': 'var(--ph-semantic-color-status-warning-border200)',
+                        'status-warning-700': 'var(--ph-semantic-color-status-warning-text700)',
+                        'status-error-100': 'var(--ph-semantic-color-status-error-bg100)',
+                        'status-error-200': 'var(--ph-semantic-color-status-error-border200)',
+                        'status-error-700': 'var(--ph-semantic-color-status-error-text700)'
+                    },
+                    spacing: {
+                        0: '0px',
+                        1: 'var(--ph-global-spacing-4)',
+                        2: 'var(--ph-global-spacing-8)',
+                        3: 'var(--ph-global-spacing-12)',
+                        4: 'var(--ph-global-spacing-16)',
+                        5: 'var(--ph-global-spacing-24)',
+                        6: 'var(--ph-global-spacing-32)'
+                    },
+                    boxShadow: {
+                        pharos: 'var(--ph-global-shadow-pharos)',
+                        'pharos-sm': 'var(--ph-global-shadow-pharosSm)'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="src/lib/pharos/semantic.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 min-h-screen p-6">
+    <div class="max-w-7xl mx-auto space-y-8">
+        <!-- Header -->
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">PHAROS Phase 5 Governance</h1>
+            <p class="text-xl text-slate-600">Testing Quality Controls, Testing Infrastructure & CI/CD</p>
+        </header>
+
+        <!-- Governance Section Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Governance & Quality Controls</h2>
+            
+            <div class="grid md:grid-cols-2 gap-3 text-sm text-slate-700">
+                <!-- Versioning -->
+                <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div class="font-medium mb-1">Versioning</div>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><b>Minor</b>: new components/props; no breaking changes.</li>
+                        <li><b>Patch</b>: bug fixes, docs copy updates.</li>
+                        <li><b>Major</b>: breaking tokens/props or removed components. Provide a migration note.</li>
+                    </ul>
+                </div>
+
+                <!-- Deprecation policy -->
+                <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                    <div class="font-medium mb-1">Deprecation policy</div>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Mark deprecated in docs with a badge and removal target.</li>
+                        <li>Keep for ≥1 minor release with a migration path.</li>
+                        <li>Remove in the next major, note in CHANGELOG.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PR checklist -->
+            <div class="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="font-medium mb-2 text-sm">PR checklist</div>
+                <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                    <li>Uses semantic tokens; no raw hex; spacing ∈ {`{4,8,12,16,24,32}`}</li>
+                    <li>Only <code>shadow-pharos</code> or <code>shadow-pharos-sm</code>; single borders</li>
+                    <li>Focus visible on all interactive elements</li>
+                    <li>Docs specimen is static (no popovers); includes state grid where applicable</li>
+                    <li>Snapshots updated (<code>npm run test:update</code>) and reviewed</li>
+                    <li>CHANGELOG entry added</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Testing Infrastructure Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Testing Infrastructure</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Playwright Tests -->
+                <div>
+                    <div class="text-sm font-medium mb-3">Playwright Visual Testing</div>
+                    <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                        <div class="text-sm text-slate-700 space-y-2">
+                            <div><b>Test Sections:</b> 18 design system sections</div>
+                            <div><b>Snapshot Path:</b> <code>tests/__screenshots__/</code></div>
+                            <div><b>Commands:</b></div>
+                            <ul class="list-disc list-inside ml-4 space-y-1">
+                                <li><code>npm run test:e2e</code> - Run visual tests</li>
+                                <li><code>npm run test:update</code> - Update snapshots</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CI/CD Pipeline -->
+                <div>
+                    <div class="text-sm font-medium mb-3">GitHub Actions CI</div>
+                    <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                        <div class="text-sm text-slate-700 space-y-2">
+                            <div><b>Triggers:</b> Push to main, PR to main</div>
+                            <div><b>Steps:</b></div>
+                            <ul class="list-disc list-inside ml-4 space-y-1">
+                                <li>Install dependencies</li>
+                                <li>Build tokens</li>
+                                <li>Lint tokens</li>
+                                <li>Install Playwright</li>
+                                <li>Run visual tests</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Token Validation Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Token Validation</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Required Keys -->
+                <div>
+                    <div class="text-sm font-medium mb-3">Required Token Keys</div>
+                    <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                        <div class="text-sm text-slate-700 space-y-1">
+                            <div><b>Global:</b> brand, brand50, spacing, radius, shadow</div>
+                            <div><b>Semantic:</b> status colors, surface colors</div>
+                            <div><b>Validation:</b> <code>npm run lint:tokens</code></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lint Guards -->
+                <div>
+                    <div class="text-sm font-medium mb-3">Lint Guards</div>
+                    <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                        <div class="text-sm text-slate-700 space-y-1">
+                            <div><b>Spacing:</b> Only {4,8,12,16,24,32} allowed</div>
+                            <div><b>Shadows:</b> Only pharos/pharos-sm allowed</div>
+                            <div><b>Colors:</b> No raw hex outside tokens</div>
+                            <div><b>Command:</b> <code>npm run lint:tokens</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quality Standards Test -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-pharos">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-4">Quality Standards</h2>
+            
+            <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="text-sm text-slate-700 space-y-3">
+                    <div><b>Token Compliance:</b> All colors, spacing, and shadows must use semantic tokens</div>
+                    <div><b>Accessibility:</b> Focus rings visible, proper contrast ratios, keyboard navigation</div>
+                    <div><b>Responsive Design:</b> Components work across breakpoints with proper mobile behavior</div>
+                    <div><b>Performance:</b> Minimal bundle impact, efficient rendering patterns</div>
+                    <div><b>Testing:</b> Visual regression tests pass, component behavior verified</div>
+                    <div><b>Documentation:</b> Clear examples, state grids, usage guidance</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

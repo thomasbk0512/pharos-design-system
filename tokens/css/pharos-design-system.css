@@ -1,0 +1,281 @@
+/* PHAROS Design System - Generated CSS */
+/* Calm, readable, predictable. Light UI only. */
+
+:root {
+  /* PHAROS Brand Colors */
+  --pharos-brand: #3538CD;
+  --pharos-brand-50: #E5E7FF;
+
+  /* PHAROS Neutral Scale */
+  --pharos-slate-100: #f1f5f9;
+  --pharos-slate-200: #e2e8f0;
+  --pharos-slate-300: #cbd5e1;
+  --pharos-slate-400: #94a3b8;
+  --pharos-slate-500: #64748b;
+  --pharos-slate-600: #475569;
+  --pharos-slate-700: #334155;
+  --pharos-slate-800: #1e293b;
+  --pharos-slate-900: #0f172a;
+
+  /* PHAROS Status Colors (Tint Triples) */
+  --pharos-success-100: #dcfce7;
+  --pharos-success-200: #bbf7d0;
+  --pharos-success-700: #15803d;
+  --pharos-warning-100: #fef3c7;
+  --pharos-warning-200: #fde68a;
+  --pharos-warning-700: #a16207;
+  --pharos-error-100: #fee2e2;
+  --pharos-error-200: #fecaca;
+  --pharos-error-700: #b91c1c;
+
+  /* PHAROS Typography */
+  --pharos-font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+  --pharos-text-xs: 0.75rem;
+  --pharos-text-sm: 0.875rem;
+  --pharos-text-base: 1rem;
+  --pharos-text-lg: 1.125rem;
+  --pharos-text-xl: 1.25rem;
+  --pharos-text-2xl: 1.5rem;
+  --pharos-text-3xl: 2rem;
+  --pharos-font-normal: 400;
+  --pharos-font-medium: 500;
+  --pharos-font-semibold: 600;
+  --pharos-font-bold: 700;
+  --pharos-leading-tight: 1.25;
+  --pharos-leading-normal: 1.5;
+
+  /* PHAROS Spacing (8px baseline only) */
+  --pharos-spacing-4: 0.25rem;   /* 4px */
+  --pharos-spacing-8: 0.5rem;    /* 8px */
+  --pharos-spacing-12: 0.75rem;  /* 12px */
+  --pharos-spacing-16: 1rem;     /* 16px */
+  --pharos-spacing-24: 1.5rem;   /* 24px */
+  --pharos-spacing-32: 2rem;     /* 32px */
+
+  /* PHAROS Border Radius */
+  --pharos-radius-xl: 0.75rem;   /* 12px - Control */
+  --pharos-radius-2xl: 1rem;     /* 16px - Card */
+
+  /* PHAROS Shadows */
+  --pharos-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  --pharos-shadow-sm: 0 1px 1px rgba(16,24,40,0.03);
+
+  /* PHAROS Focus */
+  --pharos-focus-ring: ring-2 ring-brand ring-offset-2;
+
+}
+
+/* PHAROS Utility Classes */
+
+/* Brand Colors */
+.bg-brand { background-color: var(--pharos-brand); }
+.bg-brand-50 { background-color: var(--pharos-brand-50); }
+.text-brand { color: var(--pharos-brand); }
+.text-brand-50 { color: var(--pharos-brand-50); }
+
+/* Slate Colors */
+.bg-slate-100 { background-color: var(--pharos-slate-100); }
+.bg-slate-200 { background-color: var(--pharos-slate-200); }
+.bg-slate-300 { background-color: var(--pharos-slate-300); }
+.bg-slate-400 { background-color: var(--pharos-slate-400); }
+.bg-slate-500 { background-color: var(--pharos-slate-500); }
+.bg-slate-600 { background-color: var(--pharos-slate-600); }
+.bg-slate-700 { background-color: var(--pharos-slate-700); }
+.bg-slate-800 { background-color: var(--pharos-slate-800); }
+.bg-slate-900 { background-color: var(--pharos-slate-900); }
+
+.text-slate-100 { color: var(--pharos-slate-100); }
+.text-slate-200 { color: var(--pharos-slate-200); }
+.text-slate-300 { color: var(--pharos-slate-300); }
+.text-slate-400 { color: var(--pharos-slate-400); }
+.text-slate-500 { color: var(--pharos-slate-500); }
+.text-slate-600 { color: var(--pharos-slate-600); }
+.text-slate-700 { color: var(--pharos-slate-700); }
+.text-slate-800 { color: var(--pharos-slate-800); }
+.text-slate-900 { color: var(--pharos-slate-900); }
+
+/* Status Colors (Tint Triples) */
+.bg-success-100 { background-color: var(--pharos-success-100); }
+.bg-success-200 { background-color: var(--pharos-success-200); }
+.text-success-700 { color: var(--pharos-success-700); }
+.border-success-200 { border-color: var(--pharos-success-200); }
+
+.bg-warning-100 { background-color: var(--pharos-warning-100); }
+.bg-warning-200 { background-color: var(--pharos-warning-200); }
+.text-warning-700 { color: var(--pharos-warning-700); }
+.border-warning-200 { border-color: var(--pharos-warning-200); }
+
+.bg-error-100 { background-color: var(--pharos-error-100); }
+.bg-error-200 { background-color: var(--pharos-error-200); }
+.text-error-700 { color: var(--pharos-error-700); }
+.border-error-200 { border-color: var(--pharos-error-200); }
+
+/* Typography */
+.font-pharos { font-family: var(--pharos-font-sans); }
+.text-xs { font-size: var(--pharos-text-xs); }
+.text-sm { font-size: var(--pharos-text-sm); }
+.text-base { font-size: var(--pharos-text-base); }
+.text-lg { font-size: var(--pharos-text-lg); }
+.text-xl { font-size: var(--pharos-text-xl); }
+.text-2xl { font-size: var(--pharos-text-2xl); }
+.text-3xl { font-size: var(--pharos-text-3xl); }
+
+.font-normal { font-weight: var(--pharos-font-normal); }
+.font-medium { font-weight: var(--pharos-font-medium); }
+.font-semibold { font-weight: var(--pharos-font-semibold); }
+.font-bold { font-weight: var(--pharos-font-bold); }
+
+.leading-tight { line-height: var(--pharos-leading-tight); }
+.leading-normal { line-height: var(--pharos-leading-normal); }
+
+/* Spacing (8px baseline only) */
+.p-3 { padding: var(--pharos-spacing-12); }
+.p-4 { padding: var(--pharos-spacing-16); }
+.p-6 { padding: var(--pharos-spacing-24); }
+.p-8 { padding: var(--pharos-spacing-32); }
+
+/* Border Radius */
+.rounded-xl { border-radius: var(--pharos-radius-xl); }
+.rounded-2xl { border-radius: var(--pharos-radius-2xl); }
+
+/* Shadows */
+.shadow-pharos { box-shadow: var(--pharos-shadow); }
+.shadow-pharos-sm { box-shadow: var(--pharos-shadow-sm); }
+
+/* PHAROS Component Styles */
+
+/* Button Variants */
+.btn-pharos-primary {
+  background-color: var(--pharos-brand);
+  color: white;
+  border-radius: var(--pharos-radius-xl);
+  padding: var(--pharos-spacing-12) var(--pharos-spacing-24);
+  font-weight: var(--pharos-font-medium);
+  transition: filter 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: var(--pharos-font-sans);
+}
+.btn-pharos-primary:hover { filter: brightness(0.95); }
+.btn-pharos-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-pharos-secondary {
+  background-color: var(--pharos-brand-50);
+  color: var(--pharos-slate-900);
+  border: none;
+  border-radius: var(--pharos-radius-xl);
+  padding: var(--pharos-spacing-12) var(--pharos-spacing-24);
+  font-weight: var(--pharos-font-medium);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-family: var(--pharos-font-sans);
+}
+.btn-pharos-secondary:hover { background-color: var(--pharos-slate-100); }
+.btn-pharos-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-pharos-outline {
+  background-color: white;
+  color: var(--pharos-slate-900);
+  border: 1px solid var(--pharos-slate-200);
+  border-radius: var(--pharos-radius-xl);
+  padding: var(--pharos-spacing-12) var(--pharos-spacing-24);
+  font-weight: var(--pharos-font-medium);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-family: var(--pharos-font-sans);
+}
+.btn-pharos-outline:hover { background-color: var(--pharos-slate-50); }
+.btn-pharos-outline:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-pharos-ghost {
+  background-color: transparent;
+  color: var(--pharos-slate-700);
+  border: none;
+  border-radius: var(--pharos-radius-xl);
+  padding: var(--pharos-spacing-12) var(--pharos-spacing-24);
+  font-weight: var(--pharos-font-medium);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-family: var(--pharos-font-sans);
+}
+.btn-pharos-ghost:hover { background-color: var(--pharos-slate-50); }
+.btn-pharos-ghost:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-pharos-destructive {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: var(--pharos-radius-xl);
+  padding: var(--pharos-spacing-12) var(--pharos-spacing-24);
+  font-weight: var(--pharos-font-medium);
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-family: var(--pharos-font-sans);
+}
+.btn-pharos-destructive:hover { background-color: #b91c1c; }
+.btn-pharos-destructive:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Card Styles */
+.card-pharos {
+  background-color: white;
+  border: 1px solid var(--pharos-slate-200);
+  border-radius: var(--pharos-radius-2xl);
+  box-shadow: var(--pharos-shadow-pharos-sm);
+}
+
+/* Input Styles */
+.input-pharos {
+  border: 1px solid var(--pharos-slate-200);
+  border-radius: var(--pharos-radius-xl);
+  padding: var(--pharos-spacing-12) var(--pharos-spacing-16);
+  font-family: var(--pharos-font-sans);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-size: var(--pharos-text-base);
+  color: var(--pharos-slate-900);
+}
+.input-pharos:focus {
+  outline: none;
+  border-color: var(--pharos-brand);
+  box-shadow: 0 0 0 3px var(--pharos-brand-50);
+}
+.input-pharos:disabled {
+  background-color: var(--pharos-slate-50);
+  color: var(--pharos-slate-500);
+  cursor: not-allowed;
+}
+
+/* Badge Styles */
+.badge-pharos {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: var(--pharos-spacing-4) var(--pharos-spacing-12);
+  font-size: var(--pharos-text-xs);
+  font-weight: var(--pharos-font-medium);
+  border: 1px solid;
+}
+
+.badge-pharos-neutral {
+  background-color: var(--pharos-slate-100);
+  color: var(--pharos-slate-800);
+  border-color: var(--pharos-slate-200);
+}
+
+.badge-pharos-success {
+  background-color: var(--pharos-success-100);
+  color: var(--pharos-success-700);
+  border-color: var(--pharos-success-200);
+}
+
+.badge-pharos-warning {
+  background-color: var(--pharos-warning-100);
+  color: var(--pharos-warning-700);
+  border-color: var(--pharos-warning-200);
+}
+
+.badge-pharos-error {
+  background-color: var(--pharos-error-100);
+  color: var(--pharos-error-700);
+  border-color: var(--pharos-error-200);
+}
+
