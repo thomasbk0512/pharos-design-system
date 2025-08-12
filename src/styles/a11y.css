@@ -1,0 +1,15 @@
+/* Prefer-reduced-motion: collapse motion tokens to ~instant */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ph-global-motion-fast: 1ms;
+    --ph-global-motion-base: 1ms;
+    --ph-global-motion-slow: 1ms;
+  }
+}
+
+/* Optional opt-in class to force reduced motion regardless of OS */
+.ph-reduced-motion {
+  --ph-global-motion-fast: 1ms;
+  --ph-global-motion-base: 1ms;
+  --ph-global-motion-slow: 1ms;
+}
