@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Circle, CircleCheck } from 'lucide-react'
+import { Circle, Check } from 'lucide-react'
+import { cn } from '../../lib/utils'
 
 export function Stepper({ step }: { step: 0|1|2|3 }) {
   const items = ['Goal','Composer','Deploy','Monitor']
@@ -11,7 +12,7 @@ export function Stepper({ step }: { step: 0|1|2|3 }) {
         return (
           <div key={label} className="flex items-center">
             <div className={`inline-flex items-center gap-2 border rounded-xl px-2.5 py-1 ${done ? 'bg-green-100 border-green-300' : active ? 'bg-indigo-50 border-indigo-300' : 'bg-white border-slate-300'}`}>
-              {done ? <CircleCheck className="h-4 w-4 text-green-600"/> : active ? <Circle className="h-3 w-3 text-indigo-600"/> : <span className="text-[10px] text-slate-500">{i+1}</span>}
+              {done ? <Check className="h-4 w-4 text-green-600"/> : active ? <Circle className="h-3 w-3 text-indigo-600"/> : <span className="text-[10px] text-slate-500">{i+1}</span>}
               <span className={`text-sm ${active ? 'text-slate-900 font-medium' : 'text-slate-600'}`}>{label}</span>
             </div>
             {i < items.length - 1 && <div className="mx-2 h-5 w-px bg-slate-200" />}
@@ -27,7 +28,11 @@ export function VerticalStepper({
   step, 
   steps = ['Goal', 'Composer', 'Deploy', 'Monitor'],
   className 
-}: Omit<StepperProps, 'onStepClick' | 'clickable'>) {
+}: { 
+  step: number; 
+  steps?: string[];
+  className?: string;
+}) {
   return (
     <div className={cn('space-y-4', className)}>
       {steps.map((label, i) => {
@@ -39,13 +44,13 @@ export function VerticalStepper({
             <div className={cn(
               'grid place-items-center h-6 w-6 rounded-full border flex-shrink-0 mt-0.5',
               done ? 'bg-green-100 border-green-300' : 
-              active ? 'bg-pharos-brand-50 border-pharos-brand' : 
+              active ? 'bg-brand-50 border-brand' : 
               'bg-white border-slate-300'
             )}>
               {done ? (
                 <Check className="h-4 w-4 text-green-600" />
               ) : active ? (
-                <Circle className="h-3 w-3 text-pharos-brand" />
+                <Circle className="h-3 w-3 text-brand" />
               ) : (
                 <span className="text-[10px] text-slate-500 font-medium">
                   {i + 1}
@@ -83,7 +88,11 @@ export function ProgressStepper({
   step, 
   steps = ['Goal', 'Composer', 'Deploy', 'Monitor'],
   className 
-}: Omit<StepperProps, 'onStepClick' | 'clickable'>) {
+}: { 
+  step: number; 
+  steps?: string[];
+  className?: string;
+}) {
   const progress = ((step + 1) / steps.length) * 100;
   
   return (
@@ -91,7 +100,7 @@ export function ProgressStepper({
       {/* Progress bar */}
       <div className="w-full bg-slate-200 rounded-full h-2">
         <div 
-          className="bg-pharos-brand h-2 rounded-full transition-all duration-500 ease-out"
+          className="bg-brand h-2 rounded-full transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -107,13 +116,13 @@ export function ProgressStepper({
               <div className={cn(
                 'grid place-items-center h-8 w-8 rounded-full border transition-all duration-200',
                 done ? 'bg-green-100 border-green-300' : 
-                active ? 'bg-pharos-brand-50 border-pharos-brand' : 
+                active ? 'bg-brand-50 border-brand' : 
                 'bg-white border-slate-300'
               )}>
                 {done ? (
                   <Check className="h-4 w-4 text-green-600" />
                 ) : active ? (
-                  <Circle className="h-4 w-4 text-pharos-brand" />
+                  <Circle className="h-4 w-4 text-brand" />
                 ) : (
                   <span className="text-xs text-slate-500 font-medium">
                     {i + 1}

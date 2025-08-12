@@ -1,8 +1,8 @@
 'use client'
 import * as React from 'react'
-import { PharosButton } from '@/components/pharos/Button'
-import { LabeledInput } from '@/components/pharos/LabeledInput'
-import { PharosCard } from '@/components/pharos/Card'
+import { PharosButton } from '../pharos/Button'
+import { LabeledInput } from '../pharos/LabeledInput'
+import { PharosCard } from '../pharos/Card'
 
 export function FormPattern() {
   return (

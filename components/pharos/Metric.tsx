@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { cn } from '../../lib/utils'
 
 export function Metric({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
@@ -43,22 +44,20 @@ export const PerformanceMetric = ({
   label, 
   value, 
   change, 
-  period = '30d',
-  ...props 
-}: Omit<MetricProps, 'trend' | 'trendValue'> & { 
+  period = '30d'
+}: { 
+  label: string; 
+  value: string; 
   change: number; 
   period?: string;
 }) => {
-  const trend = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
   const trendValue = `${change > 0 ? '+' : ''}${change.toFixed(1)}% ${period}`;
   
   return (
     <Metric
       label={label}
       value={value}
-      trend={trend}
-      trendValue={trendValue}
-      {...props}
+      hint={trendValue}
     />
   );
 };
@@ -66,9 +65,9 @@ export const PerformanceMetric = ({
 export const CurrencyMetric = ({ 
   label, 
   value, 
-  currency = 'USD',
-  ...props 
-}: Omit<MetricProps, 'value'> & { 
+  currency = 'USD'
+}: { 
+  label: string; 
   value: number; 
   currency?: string;
 }) => {
@@ -83,7 +82,6 @@ export const CurrencyMetric = ({
     <Metric
       label={label}
       value={formattedValue}
-      {...props}
     />
   );
 };

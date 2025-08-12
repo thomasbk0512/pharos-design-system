@@ -5,6 +5,9 @@
   "description": "Design system integrated with Figma MCP server",
   "main": "index.js",
   "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
     "tokens:build": "npx style-dictionary build --config style-dictionary.config.js",
     "tokens:watch": "npx style-dictionary build --config style-dictionary.config.js --watch",
     "predev": "npm run tokens:build",
@@ -20,20 +23,22 @@
     "clsx": "^2.0.0",
     "fs-extra": "^11.1.1",
     "lucide-react": "^0.294.0",
+    "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recharts": "^2.8.0",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.9.0",
+    "@axe-core/playwright": "^4.10.2",
     "@playwright/test": "^1.45.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "chokidar": "^3.5.3",
     "husky": "^9.0.0",
     "nodemon": "^3.0.1",
-    "style-dictionary": "^5.0.1"
+    "style-dictionary": "^5.0.1",
+    "typescript": "5.9.2"
   },
   "keywords": [
     "design-system",

@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import { X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 type Tone = 'neutral' | 'success' | 'warning' | 'error'
 export function Tag({ tone = 'neutral', children, dismissible, className }: { tone?: Tone; children: React.ReactNode; dismissible?: boolean; className?: string }) {
