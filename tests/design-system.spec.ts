@@ -61,6 +61,26 @@ test.describe('Full Suite', () => {
 test.describe('@smoke', () => {
   const smoke = ['foundations-layout', 'controls', 'governance']
   
+  // Test ToC navigation
+  test('ToC navigation works correctly', async ({ page }) => {
+    await page.goto(base)
+    await page.setViewportSize({ width: 1280, height: 900 })
+    
+    // Check that all ToC links point to valid sections
+    const tocLinks = page.locator('nav a')
+    await expect(tocLinks).toHaveCount(16) // Should have 16 sections now
+    
+    // Test a few key navigation links
+    await page.click('nav a[href="#foundations-layout"]')
+    await expect(page.locator('#foundations-layout')).toBeVisible()
+    
+    await page.click('nav a[href="#controls"]')
+    await expect(page.locator('#controls')).toBeVisible()
+    
+    await page.click('nav a[href="#governance"]')
+    await expect(page.locator('#governance')).toBeVisible()
+  })
+  
   smoke.forEach(id => {
     test(`snapshot @smoke: ${id}`, async ({ page }) => {
       await page.goto(base)
