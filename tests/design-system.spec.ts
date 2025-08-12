@@ -102,3 +102,24 @@ test.describe('@smoke', () => {
     })
   })
 })
+
+async function assertNoSeriousOrCritical(page, selector: string) {
+  const results = await new AxeBuilder({ page }).include(selector).analyze()
+  const bad = results.violations.filter(v => v.impact === 'serious' || v.impact === 'critical')
+  if (bad.length) {
+    const details = bad.map(v => `• [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} nodes)`).join('\n')
+    throw new Error(`A11y violations (serious/critical) in ${selector}:\n${details}`)
+  }
+}
+
+// Use the existing smoke sections for a11y testing
+const smokeA11y = ['foundations-layout', 'controls', 'governance']
+
+smokeA11y.forEach(id => {
+  test(`a11y (serious/critical only) @smoke: ${id}`, async ({ page }) => {
+    await page.goto(base)
+    const sel = `[data-testid="section-${id}"]`
+    await page.waitForSelector(sel)
+    await assertNoSeriousOrCritical(page, sel)
+  })
+})

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import '@/styles/a11y.css'
 
 export const metadata: Metadata = {
   title: 'PHAROS Design System',
