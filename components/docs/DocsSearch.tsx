@@ -14,7 +14,7 @@ export function DocsSearch({ items }: { items: Item[] }) {
   }, [q, items])
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-pharos-sm p-3 grid gap-2">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-pharos-sm p-3 grid gap-2" data-testid="docs-search">
       <label htmlFor="ph-docs-search" className="text-xs text-slate-600">Search sections</label>
       <input
         id="ph-docs-search"
@@ -23,10 +23,11 @@ export function DocsSearch({ items }: { items: Item[] }) {
         onChange={(e) => setQ(e.target.value)}
         placeholder="Type to filter…"
         className="h-8 rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+        data-testid="docs-search-input"
       />
-      <div className="grid gap-1">
+      <div className="grid gap-1" data-testid="docs-search-results">
         {filtered.length === 0 ? (
-          <div className="text-xs text-slate-600">No matches.</div>
+          <div className="text-xs text-slate-600" data-testid="docs-search-empty">No matches.</div>
         ) : (
           filtered.slice(0, 12).map((i) => (
             <a

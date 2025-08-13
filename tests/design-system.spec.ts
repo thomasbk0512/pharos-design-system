@@ -133,3 +133,28 @@ test('snapshot @dark: theme-dark', async ({ page }) => {
   await expect(el).toBeVisible()
   await expect(el).toHaveScreenshot('theme-dark.png', { animations: 'disabled' })
 })
+
+test.describe('@search', () => {
+  test('filters and jumps to Governance', async ({ page }) => {
+    await page.goto('http://localhost:3000/design-system')
+    const input = page.getByTestId('docs-search-input')
+    await input.fill('govern')
+
+    const results = page.getByTestId('docs-search-results').locator('a')
+    await expect(results).toHaveCount(1)
+    await expect(results.first()).toHaveText(/Governance/i)
+
+    await results.first().click()
+    await expect(page).toHaveURL(/#governance$/)
+
+    const section = page.locator('[data-testid="section-governance"]')
+    await expect(section).toBeVisible()
+  })
+
+  test('shows empty state for no matches', async ({ page }) => {
+    await page.goto('http://localhost:3000/design-system')
+    const input = page.getByTestId('docs-search-input')
+    await input.fill('zzzz-not-a-real-section')
+    await expect(page.getByTestId('docs-search-empty')).toBeVisible()
+  })
+})
