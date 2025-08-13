@@ -29,6 +29,8 @@ import { PageHeader } from '../../../components/patterns/PageHeader'
 import { ToolbarFilters } from '../../../components/patterns/ToolbarFilters'
 import { CardVariants } from '../../../components/patterns/CardVariants'
 import { DocsSearch } from '../../../components/docs/DocsSearch'
+import { PharosIcon } from '../../../components/pharos/Icon'
+import { Check, AlertTriangle, Info } from 'lucide-react'
 
 export default function Page() {
   // Document sections for search and navigation
@@ -50,6 +52,7 @@ export default function Page() {
     { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
     { id: 'theme-dark',           label: 'Theme — Dark Mode' },
     { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
+    { id: 'iconography',          label: 'Iconography' },
     { id: 'governance',           label: 'Governance' },
   ]
   // Example table rows (static)
@@ -87,6 +90,7 @@ export default function Page() {
               { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
               { id: 'theme-dark',           label: 'Theme — Dark Mode' },
               { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
+              { id: 'iconography',          label: 'Iconography' },
               { id: 'governance',           label: 'Governance' },
             ]}
           />
@@ -429,6 +433,43 @@ export default function Page() {
                 </div>
               </PharosCard>
             </div>
+          </div>
+        </SpecimenCard>
+      </DocsSection>
+
+      <DocsSection id="iconography" title="Iconography" subtitle="Sizes 16/20/24 • stroke 1.5 • color inherits text.">
+        <SpecimenCard>
+          <div className="grid md:grid-cols-3 gap-3">
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 text-sm">
+              <div className="font-medium mb-1">Sizes</div>
+              <div className="flex items-center gap-3">
+                <PharosIcon icon={Info} size={16} />
+                <PharosIcon icon={Info} size={20} />
+                <PharosIcon icon={Info} size={24} />
+              </div>
+              <div className="text-xs text-slate-600 mt-2">Allowed sizes: 16, 20 (default), 24</div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 text-sm">
+              <div className="font-medium mb-1">Stroke</div>
+              <div className="flex items-center gap-3">
+                <PharosIcon icon={Check} size={20} strokeWidth={1} />
+                <PharosIcon icon={Check} size={20} strokeWidth={1.5} />
+                <PharosIcon icon={Check} size={20} strokeWidth={2} />
+              </div>
+              <div className="text-xs text-slate-600 mt-2">Default stroke: 1.5</div>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-4 text-sm">
+              <div className="font-medium mb-1">Color (inherits)</div>
+              <div className="flex items-center gap-3">
+                <span className="text-slate-700"><PharosIcon icon={AlertTriangle} /></span>
+                <span className="text-brand"><PharosIcon icon={AlertTriangle} /></span>
+                <span className="text-red-600"><PharosIcon icon={AlertTriangle} /></span>
+              </div>
+              <div className="text-xs text-slate-600 mt-2">Icons use <code>currentColor</code> via text utilities.</div>
+            </div>
+          </div>
+          <div className="text-xs text-slate-600 mt-3">
+            Accessibility: if an icon is informative, set <code>aria-label</code>. If decorative, set <code>aria-hidden</code>.
           </div>
         </SpecimenCard>
       </DocsSection>
