@@ -39,8 +39,12 @@
   --ph-semantic-color-status-error-bg100: #FEE2E2;
   --ph-semantic-color-status-error-border200: #FECACA;
   --ph-semantic-color-status-error-text700: #B91C1C;
+  --ph-theme-color-brand-on-primary: #ffffff;
   --ph-semantic-color-border: var(--ph-global-color-slate-200);
   --ph-semantic-color-text-primary: var(--ph-global-color-slate-900);
   --ph-semantic-color-text-secondary: var(--ph-global-color-slate-500);
   --ph-semantic-color-action-primary-bg: var(--ph-global-color-brand);
+  --ph-theme-color-brand-primary: var(--ph-global-color-brand);
+  --ph-theme-color-brand-surface: var(--ph-semantic-color-surface);
+  --ph-theme-color-brand-border: var(--ph-semantic-color-border);
 }

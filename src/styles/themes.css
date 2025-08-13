@@ -1,0 +1,13 @@
+/* Default theme is already provided by :root variables via tokens. */
+
+/* Example alternative theme: use slate-800 as primary */
+.ph-theme-slate {
+  --ph-theme-color-brand-primary: var(--ph-global-color-slate-800);
+  --ph-theme-color-brand-on-primary: var(--ph-semantic-color-surface); /* readable on dark primary */
+}
+
+/* Example success theme: use status-success-700 as primary */
+.ph-theme-success {
+  --ph-theme-color-brand-primary: var(--ph-semantic-color-status-success-text700);
+  --ph-theme-color-brand-on-primary: var(--ph-semantic-color-surface);
+}

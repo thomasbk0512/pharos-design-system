@@ -68,7 +68,7 @@ test.describe('@smoke', () => {
     
     // Check that all ToC links point to valid sections
     const tocLinks = page.locator('nav a')
-    await expect(tocLinks).toHaveCount(17) // Should have 17 sections now (including dark mode)
+    await expect(tocLinks).toHaveCount(18) // Should have 18 sections now (including dark mode and brand aliases)
     
     // Test a few key navigation links
     await page.click('nav a[href="#foundations-layout"]')

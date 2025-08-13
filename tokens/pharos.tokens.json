@@ -66,5 +66,13 @@
         }
       }
     }
+  },
+  "theme": {
+    "color": {
+      "brandPrimary":      { "$value": "{global.color.brand}" },
+      "brandOnPrimary":    { "$value": "#ffffff" },
+      "brandSurface":      { "$value": "{semantic.color.surface}" },
+      "brandBorder":       { "$value": "{semantic.color.border}" }
+    }
   }
 }

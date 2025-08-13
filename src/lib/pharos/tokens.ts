@@ -38,3 +38,7 @@ export const PhSemanticColorStatusWarningText700 = "#B45309";
 export const PhSemanticColorStatusErrorBg100 = "#FEE2E2";
 export const PhSemanticColorStatusErrorBorder200 = "#FECACA";
 export const PhSemanticColorStatusErrorText700 = "#B91C1C";
+export const PhThemeColorBrandPrimary = "#3538CD";
+export const PhThemeColorBrandOnPrimary = "#ffffff";
+export const PhThemeColorBrandSurface = "#ffffff";
+export const PhThemeColorBrandBorder = "#e2e8f0";

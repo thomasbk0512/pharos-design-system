@@ -62,6 +62,7 @@ export default function Page() {
               { id: 'patterns-toolbar',     label: 'Patterns — Toolbar & Filters' },
               { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
               { id: 'theme-dark',           label: 'Theme — Dark Mode' },
+              { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
               { id: 'governance',           label: 'Governance' },
             ]}
           />
@@ -377,6 +378,29 @@ export default function Page() {
                 <div className="p-4 text-sm">
                   <div className="font-medium mb-1">Dark</div>
                   <p className="text-slate-300 mb-3">Surface, border, and text use dark tokens.</p>
+                  <PharosButton>Primary action</PharosButton>
+                </div>
+              </PharosCard>
+            </div>
+          </div>
+        </SpecimenCard>
+      </DocsSection>
+
+      <DocsSection id="theme-alias" title="Theme — Brand Aliases" subtitle="Swap brand via CSS variable overrides without touching components.">
+        <SpecimenCard>
+          <div className="grid md:grid-cols-2 gap-3">
+            <PharosCard>
+              <div className="p-4 text-sm">
+                <div className="font-medium mb-1">Default theme</div>
+                <p className="text-slate-700 mb-3">Components use Tailwind <code>brand</code> mapped to alias tokens.</p>
+                <PharosButton>Primary action</PharosButton>
+              </div>
+            </PharosCard>
+            <div className="ph-theme-slate">
+              <PharosCard>
+                <div className="p-4 text-sm">
+                  <div className="font-medium mb-1">Slate theme (scoped)</div>
+                  <p className="text-slate-700 mb-3">Scoped override via <code>.ph-theme-slate</code>.</p>
                   <PharosButton>Primary action</PharosButton>
                 </div>
               </PharosCard>
