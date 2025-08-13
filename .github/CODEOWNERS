@@ -1,0 +1,12 @@
+# Default owners (design system core)
+*                                   @your-org/design-system
+
+# Extra attention on tokens, Tailwind, and docs infra
+/tokens/**                          @your-org/design-system
+/src/lib/pharos/**                  @your-org/design-system
+/tailwind.config.*                  @your-org/design-system
+/scripts/**                         @your-org/design-system
+/src/app/design-system/**           @your-org/design-system
+/.github/**                         @your-org/design-system
+
+# Optional: widen ownership later per team areas
