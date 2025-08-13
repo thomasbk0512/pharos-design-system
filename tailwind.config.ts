@@ -7,7 +7,7 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: 'var(--ph-global-color-brand)',
+          DEFAULT: 'var(--ph-theme-color-brand-primary)',
           50: 'var(--ph-global-color-brand50)'
         },
         // Status tint triples mapped to utilities
