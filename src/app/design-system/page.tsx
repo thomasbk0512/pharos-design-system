@@ -28,8 +28,30 @@ import { ConfirmDialogSpec } from '../../../components/patterns/ConfirmDialogSpe
 import { PageHeader } from '../../../components/patterns/PageHeader'
 import { ToolbarFilters } from '../../../components/patterns/ToolbarFilters'
 import { CardVariants } from '../../../components/patterns/CardVariants'
+import { DocsSearch } from '../../../components/docs/DocsSearch'
 
 export default function Page() {
+  // Document sections for search and navigation
+  const DOC_SECTIONS = [
+    { id: 'foundations-layout',   label: 'Layout & Breakpoints' },
+    { id: 'foundations-motion',   label: 'Motion' },
+    { id: 'foundations-density',  label: 'Density' },
+    { id: 'foundations-zindex',   label: 'Z-Index' },
+    { id: 'foundations-dataviz',  label: 'Data-Viz' },
+    { id: 'controls',             label: 'Controls' },
+    { id: 'tabs',                 label: 'Tabs' },
+    { id: 'feedback',             label: 'Feedback' },
+    { id: 'table-pagination',     label: 'Table & Pagination' },
+    { id: 'empty-tags',           label: 'Empty States & Tags' },
+    { id: 'patterns-forms',       label: 'Patterns — Forms' },
+    { id: 'patterns-confirmation', label: 'Patterns — Confirmation Dialogs' },
+    { id: 'patterns-header',      label: 'Patterns — Page Header' },
+    { id: 'patterns-toolbar',     label: 'Patterns — Toolbar & Filters' },
+    { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
+    { id: 'theme-dark',           label: 'Theme — Dark Mode' },
+    { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
+    { id: 'governance',           label: 'Governance' },
+  ]
   // Example table rows (static)
   const rows = [
     { name: 'WETH/USDC', value: '$5,000', date: '2025-06-01' },
@@ -41,7 +63,9 @@ export default function Page() {
     <>
       <style>{`html{ scroll-behavior:smooth; }`}</style>
     <DocsPage>
-      <div className="lg:grid lg:grid-cols-[260px_1fr] lg:gap-6">
+      <div className="grid gap-3">
+        <DocsSearch items={DOC_SECTIONS} />
+        <div className="lg:grid lg:grid-cols-[260px_1fr] lg:gap-6">
         {/* Left Rail: Table of Contents */}
         <div className="hidden lg:block">
           <DocsToc
@@ -409,6 +433,7 @@ export default function Page() {
         </SpecimenCard>
       </DocsSection>
         </div>
+      </div>
       </div>
     </DocsPage>
     </>
