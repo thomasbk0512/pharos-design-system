@@ -68,7 +68,7 @@ test.describe('@smoke', () => {
     
     // Check that all ToC links point to valid sections
     const tocLinks = page.locator('nav a')
-    await expect(tocLinks).toHaveCount(16) // Should have 16 sections now
+    await expect(tocLinks).toHaveCount(17) // Should have 17 sections now (including dark mode)
     
     // Test a few key navigation links
     await page.click('nav a[href="#foundations-layout"]')
@@ -122,4 +122,14 @@ smokeA11y.forEach(id => {
     await page.waitForSelector(sel)
     await assertNoSeriousOrCritical(page, sel)
   })
+})
+
+test('snapshot @dark: theme-dark', async ({ page }) => {
+  await page.goto('http://localhost:3000/design-system')
+  await page.evaluate(() => document.documentElement.classList.add('dark'))
+  const sel = '[data-testid="section-theme-dark"]'
+  await page.waitForSelector(sel)
+  const el = page.locator(sel)
+  await expect(el).toBeVisible()
+  await expect(el).toHaveScreenshot('theme-dark.png', { animations: 'disabled' })
 })

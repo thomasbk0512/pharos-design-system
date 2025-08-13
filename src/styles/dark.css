@@ -1,0 +1,18 @@
+/* Global dark mode: when the html element has .dark */
+:root.dark {
+  --ph-semantic-color-surface: var(--ph-global-color-slate-900);
+  --ph-semantic-color-surfaceAlt: var(--ph-global-color-slate-800);
+  --ph-semantic-color-border: var(--ph-global-color-slate-600);
+  --ph-semantic-color-textPrimary: var(--ph-global-color-slate-100);
+  --ph-semantic-color-textSecondary: var(--ph-global-color-slate-500);
+  /* Primary action text remains the same token; no override required */
+}
+
+/* Scoped demo wrapper: enables side-by-side dark preview in docs */
+.ph-dark {
+  --ph-semantic-color-surface: var(--ph-global-color-slate-900);
+  --ph-semantic-color-surfaceAlt: var(--ph-global-color-slate-800);
+  --ph-semantic-color-border: var(--ph-global-color-slate-600);
+  --ph-semantic-color-textPrimary: var(--ph-global-color-slate-100);
+  --ph-semantic-color-textSecondary: var(--ph-global-color-slate-500);
+}

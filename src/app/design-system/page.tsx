@@ -61,6 +61,7 @@ export default function Page() {
               { id: 'patterns-header',      label: 'Patterns — Page Header' },
               { id: 'patterns-toolbar',     label: 'Patterns — Toolbar & Filters' },
               { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
+              { id: 'theme-dark',           label: 'Theme — Dark Mode' },
               { id: 'governance',           label: 'Governance' },
             ]}
           />
@@ -355,6 +356,32 @@ export default function Page() {
             <li>Snapshots updated (<code>npm run test:update</code>) and reviewed</li>
             <li>CHANGELOG entry added</li>
           </ul>
+        </SpecimenCard>
+      </DocsSection>
+
+      {/* ======================================= */}
+      {/* THEME — DARK MODE                      */}
+      {/* ======================================= */}
+      <DocsSection id="theme-dark" title="Theme — Dark Mode" subtitle="Token-first overrides via :root.dark and .ph-dark.">
+        <SpecimenCard>
+          <div className="grid md:grid-cols-2 gap-3">
+            <PharosCard>
+              <div className="p-4 text-sm">
+                <div className="font-medium mb-1">Light</div>
+                <p className="text-slate-700 mb-3">Surface, border, and text use light tokens.</p>
+                <PharosButton>Primary action</PharosButton>
+              </div>
+            </PharosCard>
+            <div className="ph-dark">
+              <PharosCard>
+                <div className="p-4 text-sm">
+                  <div className="font-medium mb-1">Dark</div>
+                  <p className="text-slate-300 mb-3">Surface, border, and text use dark tokens.</p>
+                  <PharosButton>Primary action</PharosButton>
+                </div>
+              </PharosCard>
+            </div>
+          </div>
         </SpecimenCard>
       </DocsSection>
         </div>
