@@ -68,7 +68,7 @@ test.describe('@smoke', () => {
     
     // Check that all ToC links point to valid sections
     const tocLinks = page.locator('nav a')
-    await expect(tocLinks).toHaveCount(19) // Should have 19 sections now (including dark mode, brand aliases, and iconography)
+    await expect(tocLinks).toHaveCount(23) // Should have 23 sections now (including new form and feedback sections)
     
     // Test a few key navigation links
     await page.click('nav a[href="#foundations-layout"]')
@@ -165,5 +165,17 @@ test.describe('@iconography', () => {
     const sel = '[data-testid="section-iconography"]'
     await page.waitForSelector(sel)
     await expect(page.locator(sel)).toBeVisible()
+  })
+})
+
+test.describe('@forms-coverage', () => {
+  const ids = ['forms-select','forms-date','feedback-skeleton','forms-inline-validation']
+  ids.forEach(id => {
+    test(`section renders: ${id}`, async ({ page }) => {
+      await page.goto('http://localhost:3000/design-system')
+      const sel = `[data-testid="section-${id}"]`
+      await page.waitForSelector(sel)
+      await expect(page.locator(sel)).toBeVisible()
+    })
   })
 })

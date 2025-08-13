@@ -31,6 +31,10 @@ import { CardVariants } from '../../../components/patterns/CardVariants'
 import { DocsSearch } from '../../../components/docs/DocsSearch'
 import { PharosIcon } from '../../../components/pharos/Icon'
 import { Check, AlertTriangle, Info } from 'lucide-react'
+import { SelectSpecimen } from '../../../components/patterns/SelectSpecimen'
+import { DateInputGuidelines } from '../../../components/patterns/DateInputGuidelines'
+import { SkeletonSpecimen } from '../../../components/patterns/SkeletonSpecimen'
+import { InlineValidationSpecimen } from '../../../components/patterns/InlineValidationSpecimen'
 
 export default function Page() {
   // Document sections for search and navigation
@@ -50,6 +54,10 @@ export default function Page() {
     { id: 'patterns-header',      label: 'Patterns — Page Header' },
     { id: 'patterns-toolbar',     label: 'Patterns — Toolbar & Filters' },
     { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
+    { id: 'forms-select',         label: 'Forms — Select & Combobox' },
+    { id: 'forms-date',           label: 'Forms — Date Input' },
+    { id: 'feedback-skeleton',    label: 'Feedback — Skeleton' },
+    { id: 'forms-inline-validation', label: 'Forms — Inline Validation' },
     { id: 'theme-dark',           label: 'Theme — Dark Mode' },
     { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
     { id: 'iconography',          label: 'Iconography' },
@@ -88,6 +96,10 @@ export default function Page() {
               { id: 'patterns-header',      label: 'Patterns — Page Header' },
               { id: 'patterns-toolbar',     label: 'Patterns — Toolbar & Filters' },
               { id: 'patterns-cards',       label: 'Patterns — Card Variants' },
+              { id: 'forms-select',         label: 'Forms — Select & Combobox' },
+              { id: 'forms-date',           label: 'Forms — Date Input' },
+              { id: 'feedback-skeleton',    label: 'Feedback — Skeleton' },
+              { id: 'forms-inline-validation', label: 'Forms — Inline Validation' },
               { id: 'theme-dark',           label: 'Theme — Dark Mode' },
               { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
               { id: 'iconography',          label: 'Iconography' },
@@ -347,6 +359,30 @@ export default function Page() {
       <DocsSection id="patterns-cards" title="Patterns — Card Variants" subtitle="Base, header actions, and divided sections.">
         <SpecimenCard>
           <CardVariants />
+        </SpecimenCard>
+      </DocsSection>
+
+      <DocsSection id="forms-select" title="Forms — Select & Combobox" subtitle="Use Select for short lists; Combobox for ≥7 options. Static specimens.">
+        <SpecimenCard>
+          <SelectSpecimen />
+        </SpecimenCard>
+      </DocsSection>
+
+      <DocsSection id="forms-date" title="Forms — Date Input" subtitle="Prefer native date input; provide text fallback (YYYY-MM-DD).">
+        <SpecimenCard>
+          <DateInputGuidelines />
+        </SpecimenCard>
+      </DocsSection>
+
+      <DocsSection id="feedback-skeleton" title="Feedback — Skeleton" subtitle="Pulse for first load only; respect prefers-reduced-motion.">
+        <SpecimenCard>
+          <SkeletonSpecimen />
+        </SpecimenCard>
+      </DocsSection>
+
+      <DocsSection id="forms-inline-validation" title="Forms — Inline Validation" subtitle="One actionable error beneath the field.">
+        <SpecimenCard>
+          <InlineValidationSpecimen />
         </SpecimenCard>
       </DocsSection>
 
