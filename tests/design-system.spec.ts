@@ -68,7 +68,7 @@ test.describe('@smoke', () => {
     
     // Check that all ToC links point to valid sections
     const tocLinks = page.locator('nav a')
-    await expect(tocLinks).toHaveCount(18) // Should have 18 sections now (including dark mode and brand aliases)
+    await expect(tocLinks).toHaveCount(19) // Should have 19 sections now (including dark mode, brand aliases, and iconography)
     
     // Test a few key navigation links
     await page.click('nav a[href="#foundations-layout"]')
@@ -156,5 +156,14 @@ test.describe('@search', () => {
     const input = page.getByTestId('docs-search-input')
     await input.fill('zzzz-not-a-real-section')
     await expect(page.getByTestId('docs-search-empty')).toBeVisible()
+  })
+})
+
+test.describe('@iconography', () => {
+  test('iconography section renders', async ({ page }) => {
+    await page.goto('http://localhost:3000/design-system')
+    const sel = '[data-testid="section-iconography"]'
+    await page.waitForSelector(sel)
+    await expect(page.locator(sel)).toBeVisible()
   })
 })

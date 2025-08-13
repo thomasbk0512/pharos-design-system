@@ -28,3 +28,40 @@ if (offenders.length) {
 } else {
   console.log('Token guard passed')
 }
+
+// Guard: discourage direct lucide-react imports outside the wrapper
+const SRC_DIR = 'src'
+const LUCIDE_RE = /from\s+['"]lucide-react['"]/g
+const ALLOWLIST = new Set([
+  'components/pharos/Icon.tsx',
+  'components/docs', // docs can import for specimens if needed
+  'src/app/design-system' // design system docs can import for specimens
+])
+
+function scanLucideImports(dir) {
+  if (!fs.existsSync(dir)) return []
+  const bad = []
+  for (const entry of fs.readdirSync(dir)) {
+    const p = path.join(dir, entry)
+    const rel = p.replace(process.cwd() + path.sep, '')
+    const stat = fs.statSync(p)
+    if (stat.isDirectory()) {
+      bad.push(...scanLucideImports(p))
+      continue
+    }
+    if (!rel.endsWith('.tsx') && !rel.endsWith('.ts')) continue
+    const text = fs.readFileSync(p, 'utf8')
+    if (LUCIDE_RE.test(text)) {
+      const allowed = [...ALLOWLIST].some(ok => rel.includes(ok))
+      if (!allowed) bad.push(rel)
+    }
+  }
+  return bad
+}
+
+const badLucide = scanLucideImports(SRC_DIR)
+if (badLucide.length) {
+  console.error('Icon guard failed: import lucide-react only via components/pharos/Icon.tsx')
+  badLucide.forEach(f => console.error(' - ' + f))
+  process.exit(1)
+}
