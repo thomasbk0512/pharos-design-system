@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { PharosButton } from '@/components/pharos/Button';
 import { PharosIcon } from '@/components/pharos/Icon';
-import { LayoutDashboard, TrendingUp, Lightbulb, Zap } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, Lightbulb, Zap } from '@/components/pharos/icons';
 import { type Tab } from '@/constants/nav';
 
 const NAV: Array<{ label: Tab; icon: any }> = [

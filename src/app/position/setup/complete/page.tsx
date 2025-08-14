@@ -1,7 +1,7 @@
 import { AppShell } from '@/components/patterns/AppShell'
 import { PharosButton } from '@/components/pharos/Button'
 import { BottomCta } from '@/components/patterns/AppShell'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle } from '@/components/pharos/icons'
 
 export default function PositionCompletePage() {
   return (

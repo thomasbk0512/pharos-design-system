@@ -2,7 +2,7 @@ import { AppShell } from '@/components/patterns/AppShell'
 import { PharosButton } from '@/components/pharos/Button'
 import { BottomCta } from '@/components/patterns/AppShell'
 import { PharosIcon } from '@/components/pharos/Icon'
-import { CheckCircle, Clock, DollarSign } from 'lucide-react'
+import { CheckCircle, Clock, DollarSign } from '@/components/pharos/icons'
 
 export default function ExecuteProgressPage() {
   return (

@@ -2,7 +2,7 @@ import { AppShellQueryGate } from '@/components/patterns/AppShellQueryGate'
 import { PharosButton } from '@/components/pharos/Button'
 import { PharosIcon } from '@/components/pharos/Icon'
 import { BottomCta } from '@/components/patterns/AppShell'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft } from '@/components/pharos/icons'
 import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'

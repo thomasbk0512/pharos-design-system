@@ -1,7 +1,7 @@
 import { AppShell } from '@/components/patterns/AppShell'
 import { PharosButton } from '@/components/pharos/Button'
 import { PharosIcon } from '@/components/pharos/Icon'
-import { TrendingUp, Shield, Zap } from 'lucide-react'
+import { TrendingUp, Shield, Zap } from '@/components/pharos/icons'
 
 export default function RecommendationsPage() {
   const providers = [
