@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { PharosButton } from '@/components/pharos/Button'
 import { PharosIcon } from '@/components/pharos/Icon'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft } from '@/components/pharos/icons'
 
 export function PositionSetupSpecimen() {
   return (
@@ -39,8 +39,8 @@ export function PositionSetupSpecimen() {
         </PharosButton>
       </div>
 
-      {/* Section gap (40px) */}
-      <div className="ph-spacer-40" aria-hidden />
+      {/* Section gap (24px) */}
+      <div className="ph-spacer-24" aria-hidden />
 
       {/* Next section */}
       <h5 className="text-[20px] leading-[28px] font-medium mb-6">Capital Deployment</h5>

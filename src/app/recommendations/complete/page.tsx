@@ -2,7 +2,7 @@ import { AppShell } from '@/components/patterns/AppShell'
 import { PharosButton } from '@/components/pharos/Button'
 import { BottomCta } from '@/components/patterns/AppShell'
 import { PharosIcon } from '@/components/pharos/Icon'
-import { CheckCircle, TrendingUp, DollarSign } from 'lucide-react'
+import { CheckCircle, TrendingUp, DollarSign } from '@/components/pharos/icons'
 
 export default function RecommendationsCompletePage() {
   return (

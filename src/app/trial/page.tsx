@@ -2,7 +2,7 @@ import { AppShellQueryGate } from '@/components/patterns/AppShellQueryGate'
 import { PharosButton } from '@/components/pharos/Button'
 import { BottomCta } from '@/components/patterns/AppShell'
 import { PharosIcon } from '@/components/pharos/Icon'
-import { Zap, Shield, TrendingUp, BarChart3, Clock, Users } from 'lucide-react'
+import { Zap, Shield, TrendingUp, BarChart3, Clock, Users } from '@/components/pharos/icons'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -12,11 +12,11 @@ export default function TrialPage() {
     <AppShellQueryGate>
       <div data-testid="page-trial" className="pt-6">
         {/* Header */}
-        <h4 className="text-[20px] leading-[32px] font-semibold mb-8">Enhance Your DeFi Strategy</h4>
+        <h4 className="text-[20px] leading-[32px] font-semibold mb-6">Enhance Your DeFi Strategy</h4>
 
         {/* Free Trial Display */}
-        <section className="mb-8">
-          <div className="bg-gradient-to-br from-brand/10 to-purple-100 border border-brand/20 rounded-2xl p-8 text-center">
+        <section className="mb-6">
+          <div className="bg-gradient-to-br from-brand/10 to-purple-100 border border-brand/20 rounded-2xl p-6 text-center">
             <div className="text-6xl font-bold text-brand mb-2">7-day</div>
             <div className="text-2xl font-semibold text-slate-900 mb-4">free trial</div>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">
@@ -26,7 +26,7 @@ export default function TrialPage() {
         </section>
 
         {/* Pricing Lines */}
-        <section className="mb-8">
+        <section className="mb-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-slate-600">After trial</span>
@@ -44,7 +44,7 @@ export default function TrialPage() {
         </section>
 
         {/* SOC 2 Chip Row */}
-        <section className="mb-8">
+        <section className="mb-6">
           <div className="flex items-center justify-center">
             <div className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">
               SOC 2 Type II Certified
@@ -53,7 +53,7 @@ export default function TrialPage() {
         </section>
 
         {/* Feature List */}
-        <section className="mb-8">
+        <section className="mb-6">
           <h5 className="text-[18px] leading-[28px] font-medium mb-4">Premium Features</h5>
           <div className="space-y-4">
             {[

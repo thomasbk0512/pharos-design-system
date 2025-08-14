@@ -14,11 +14,10 @@ walk(root)
 const offenders = []
 for (const f of files) {
   const s = fs.readFileSync(f, 'utf8')
-  // ban stray hex colors and illegal spacing/shadows
+  // ban stray hex colors and illegal shadows
   const badHex = /#[0-9a-fA-F]{3,8}\b/.test(s)
-  const badSpace = /(p|px|py|pt|pr|pb|pl|m|mx|my|gap)-(?![0-6]\b)/.test(s)
   const badShadow = /shadow-(?!pharos(-sm)?\b)/.test(s)
-  if (badHex || badSpace || badShadow) offenders.push(f)
+  if (badHex || badShadow) offenders.push(f)
 }
 
 if (offenders.length) {
@@ -34,13 +33,11 @@ const SRC_DIR = 'src'
 const LUCIDE_RE = /from\s+['"]lucide-react['"]/g
 const ALLOWLIST = new Set([
   'components/pharos/Icon.tsx',
-  'components/docs', // docs can import for specimens if needed
-  'src/app/design-system', // design system docs can import for specimens
-  'src/app/dashboard', // app pages can import for navigation
-  'src/app/execute', // app pages can import for navigation
-  'src/app/position', // app pages can import for navigation
-  'src/app/trial', // app pages can import for navigation
-  'src/app/recommendations' // app pages can import for navigation
+  'components/pharos/icons.ts',     // central icon re-exports (new)
+  'components/docs',                // docs can import for specimens if needed
+  'src/app/design-system',          // design system docs can import for specimens
+  'components/patterns'             // specimens
+  // NOTE: app pages must import from components/pharos/icons.ts
 ])
 
 function scanLucideImports(dir) {
@@ -66,7 +63,43 @@ function scanLucideImports(dir) {
 
 const badLucide = scanLucideImports(SRC_DIR)
 if (badLucide.length) {
-  console.error('Icon guard failed: import lucide-react only via components/pharos/Icon.tsx')
+  console.error('Icon guard failed: import lucide-react only via components/pharos/Icon.tsx or components/pharos/icons.ts')
   badLucide.forEach(f => console.error(' - ' + f))
+  process.exit(1)
+}
+
+// Guard: spacing utilities must use allowed Tailwind indices (supports variants e.g. md:mb-6)
+// Allowed ladder (Tailwind indices): 0,1,2,3,4,6,8,10 → 0,4,8,12,16,24,32,40px
+const allowed = new Set(['0','1','2','3','4','6','8','10'])
+// capture classes like "mb-12", "md:gap-5", "sm:space-y-5", "p-8"
+const spacingTokenRe = /(?:^|\s)(?:[a-z-]+:)*(-?(?:p|px|py|pt|pr|pb|pl|m|mx|my|mt|mr|mb|ml|gap|space-x|space-y))-(\d+)(?=\s|["'`]|$)/g
+
+function scanSpacingVerbose(file) {
+  const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/)
+  const hits = []
+  lines.forEach((line, i) => {
+    let m
+    spacingTokenRe.lastIndex = 0
+    while ((m = spacingTokenRe.exec(line)) !== null) {
+      const idx = m[2]
+      if (!allowed.has(idx)) {
+        hits.push({ line: i+1, token: `${m[1]}-${idx}` })
+      }
+    }
+  })
+  return hits
+}
+
+const spacingProblems = []
+for (const f of files) {
+  const hits = scanSpacingVerbose(f)
+  if (hits.length) spacingProblems.push({ file: f, hits })
+}
+if (spacingProblems.length) {
+  console.error('Spacing guard failed: only indices 0,2,3,4,6,8,10 are allowed (→ 0,8,12,16,24,32,40px)')
+  spacingProblems.forEach(({file, hits}) => {
+    console.error(` - ${file}`)
+    hits.forEach(h => console.error(`    L${h.line}: ${h.token}`))
+  })
   process.exit(1)
 }

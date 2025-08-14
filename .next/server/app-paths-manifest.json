@@ -4,11 +4,11 @@
   "/position/performance/page": "app/position/performance/page.js",
   "/position/setup/complete/page": "app/position/setup/complete/page.js",
   "/recommendations/complete/page": "app/recommendations/complete/page.js",
+  "/recommendations/page": "app/recommendations/page.js",
   "/recommendations/execute/page": "app/recommendations/execute/page.js",
   "/recommendations/optimal/page": "app/recommendations/optimal/page.js",
-  "/recommendations/page": "app/recommendations/page.js",
-  "/execute/connect/page": "app/execute/connect/page.js",
   "/page": "app/page.js",
+  "/execute/connect/page": "app/execute/connect/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/position/setup/page": "app/position/setup/page.js",
   "/trial/page": "app/trial/page.js"

@@ -1,7 +1,7 @@
 import { AppShellQueryGate } from '@/components/patterns/AppShellQueryGate'
 import { PharosButton } from '@/components/pharos/Button'
 import { PharosIcon } from '@/components/pharos/Icon'
-import { TrendingUp, TrendingDown, ExternalLink, AlertTriangle, Lightbulb } from 'lucide-react'
+import { TrendingUp, TrendingDown, ExternalLink, AlertTriangle, Lightbulb } from '@/components/pharos/icons'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
