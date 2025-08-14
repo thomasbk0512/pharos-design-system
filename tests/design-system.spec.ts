@@ -179,3 +179,90 @@ test.describe('@forms-coverage', () => {
     })
   })
 })
+
+// App Shell: height check
+test.describe('@templates', () => {
+  test('app shell & 104px bottom nav', async ({ page }) => {
+    await page.goto('http://localhost:3000/design-system')
+    const section = page.locator('[data-testid="section-templates-shell"]')
+    await section.waitFor()
+    
+    // The AppShell specimen in design system doesn't show bottom nav by default
+    // So we test that the AppShell component itself is visible
+    const appShell = page.locator('[data-testid="app-shell"]')
+    await expect(appShell).toBeVisible()
+    
+    // Test the actual bottom nav functionality on a real page
+    await page.goto('http://localhost:3000/dashboard?auth=1')
+    const bottomNav = page.getByTestId('app-bottom-nav')
+    await expect(bottomNav).toBeVisible()
+    const h = await bottomNav.evaluate(el => el.getBoundingClientRect().height)
+    expect(Math.round(h)).toBe(104)
+  })
+
+  test('auth toggle functionality', async ({ page }) => {
+    // Test dashboard without auth - nav should not be visible
+    await page.goto('http://localhost:3000/dashboard')
+    const bottomNav = page.locator('[data-testid="app-bottom-nav"]')
+    await expect(bottomNav).not.toBeVisible()
+    
+    // Test dashboard with auth=1 - nav should be visible and ~104px
+    await page.goto('http://localhost:3000/dashboard?auth=1')
+    await expect(bottomNav).toBeVisible()
+    
+    const height = await bottomNav.evaluate(el => (el as HTMLElement).offsetHeight)
+    expect(height).toBeGreaterThanOrEqual(100); // Allow for safe area padding
+    expect(height).toBeLessThanOrEqual(120);
+  })
+
+  test('breakpoint smoke tests', async ({ page }) => {
+    // Mobile viewport (375×812) - iPhone X
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('http://localhost:3000/dashboard?auth=1');
+    await expect(page.locator('[data-testid="app-shell"]')).toBeVisible();
+    await expect(page.locator('[data-testid="app-bottom-nav"]')).toBeVisible();
+    
+    // Tablet viewport (768×1024) - iPad
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await page.goto('http://localhost:3000/dashboard?auth=1');
+    await expect(page.locator('[data-testid="app-shell"]')).toBeVisible();
+    await expect(page.locator('[data-testid="app-bottom-nav"]')).toBeVisible();
+  })
+})
+
+// Vertical rhythm: token-level contracts
+test.describe('@rhythm', () => {
+  test('position setup spacing contracts (token-level)', async ({ page }) => {
+    await page.goto('http://localhost:3000/design-system')
+    const section = page.locator('[data-testid="section-layout-vertical-rhythm"]')
+    await section.waitFor()
+
+    // 1) Header row: must be a flex row with gap-4 (16px) and mb-8 (32px)
+    const row = section.getByTestId('vr-header-row')
+    await expect(row).toHaveClass(/(?:^|\s)flex(?:\s|$)/)
+    await expect(row).toHaveClass(/(?:^|\s)gap-4(?:\s|$)/)
+    await expect(row).toHaveClass(/(?:^|\s)mb-8(?:\s|$)/)
+
+    // 2) H5 must advertise the 24px downstream gap via mb-6
+    const h5 = section.getByText('Select Your Trading Pair').first()
+    await expect(h5).toHaveClass(/(?:^|\s)mb-6(?:\s|$)/)
+
+    // 3) Label → Control is governed by .ph-stack-label (8px)
+    const labelStack = section.locator('.ph-stack-label').first()
+    const labelToControl = await labelStack.evaluate((el) => {
+      const second = el.children?.[1] as HTMLElement | undefined
+      return second ? getComputedStyle(second).marginTop : null
+    })
+    expect(labelToControl).toBe('8px')
+
+    // 4) Control → Control uses spacer-16 (16px)
+    const spacer16 = section.locator('.ph-spacer-16').first()
+    const h16 = await spacer16.evaluate((el) => Math.round(el.getBoundingClientRect().height))
+    expect(h16).toBe(16)
+
+    // 5) Section → Section uses spacer-24 (24px)
+    const spacer24 = section.locator('.ph-spacer-24').first()
+    const h24 = await spacer24.evaluate((el) => Math.round(el.getBoundingClientRect().height))
+    expect(h24).toBe(24)
+  })
+})

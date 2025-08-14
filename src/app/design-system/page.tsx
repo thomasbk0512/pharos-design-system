@@ -35,6 +35,8 @@ import { SelectSpecimen } from '../../../components/patterns/SelectSpecimen'
 import { DateInputGuidelines } from '../../../components/patterns/DateInputGuidelines'
 import { SkeletonSpecimen } from '../../../components/patterns/SkeletonSpecimen'
 import { InlineValidationSpecimen } from '../../../components/patterns/InlineValidationSpecimen'
+import { AppShell } from '../../../components/patterns/AppShell'
+import { PositionSetupSpecimen } from '../../../components/patterns/PositionSetupSpecimen'
 
 export default function Page() {
   // Document sections for search and navigation
@@ -62,6 +64,8 @@ export default function Page() {
     { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
     { id: 'iconography',          label: 'Iconography' },
     { id: 'governance',           label: 'Governance' },
+    { id: 'templates-shell',          label: 'Templates — App Shell' },
+    { id: 'layout-vertical-rhythm',   label: 'Layout — Vertical Rhythm' },
   ]
   // Example table rows (static)
   const rows = [
@@ -104,6 +108,8 @@ export default function Page() {
               { id: 'theme-alias',          label: 'Theme — Brand Aliases' },
               { id: 'iconography',          label: 'Iconography' },
               { id: 'governance',           label: 'Governance' },
+              { id: 'templates-shell',          label: 'Templates — App Shell' },
+              { id: 'layout-vertical-rhythm',   label: 'Layout — Vertical Rhythm' },
             ]}
           />
         </div>
@@ -384,6 +390,27 @@ export default function Page() {
         <SpecimenCard>
           <InlineValidationSpecimen />
         </SpecimenCard>
+      </DocsSection>
+
+      {/* ======================================= */}
+      {/* TEMPLATES — APP SHELL                    */}
+      {/* ======================================= */}
+      <DocsSection id="templates-shell" title="Templates — App Shell" subtitle="No sidebar. 64px header, 16px gutters, 104px bottom menu.">
+        <SpecimenCard>
+          <AppShell>
+            <div className="p-6">
+              <h2 className="text-[20px] leading-[32px] font-semibold mb-4">App Shell Example</h2>
+              <p className="text-slate-600">This demonstrates the mobile-first app shell with optional bottom navigation.</p>
+            </div>
+          </AppShell>
+        </SpecimenCard>
+      </DocsSection>
+
+      {/* ======================================= */}
+      {/* LAYOUT — VERTICAL RHYTHM                */}
+      {/* ======================================= */}
+      <DocsSection id="layout-vertical-rhythm" title="Layout — Vertical Rhythm" subtitle="Stacks for 16/32/24/8/16/40 spacing.">
+        <SpecimenCard><PositionSetupSpecimen /></SpecimenCard>
       </DocsSection>
 
       {/* ======================================= */}

@@ -69,3 +69,5 @@ export function getInitials(name: string): string {
 export function generateId(prefix: string = 'pharos'): string {
   return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
 }
+
+

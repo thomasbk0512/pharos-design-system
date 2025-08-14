@@ -25,3 +25,5 @@ export function PharosTable({ rows }: { rows: { name: string; value: string; dat
     </div>
   )
 }
+
+

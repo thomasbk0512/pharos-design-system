@@ -28,3 +28,5 @@ export function SkeletonSpecimen() {
     </div>
   )
 }
+
+

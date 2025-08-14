@@ -1,0 +1,22 @@
+/* Token-driven vertical stack utilities */
+.ph-stack-field > * + * {
+  margin-top: var(--ph-global-spacing-16, 16px);
+}
+
+.ph-stack-label > * + * {
+  margin-top: var(--ph-global-spacing-8, 8px);
+}
+
+/* Spacer blocks for consistent section gaps */
+.ph-spacer-16 {
+  height: var(--ph-global-spacing-16, 16px);
+}
+
+.ph-spacer-24 {
+  height: var(--ph-global-spacing-24, 24px);
+}
+
+/* Safe area padding for iOS notches */
+.ph-bottom-nav-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
