@@ -68,7 +68,7 @@ test.describe('@smoke', () => {
     
     // Check that all ToC links point to valid sections
     const tocLinks = page.locator('nav a')
-    await expect(tocLinks).toHaveCount(23) // Should have 23 sections now (including new form and feedback sections)
+    await expect(tocLinks).toHaveCount(25) // Should have 25 sections now (including new form, feedback, and template sections)
     
     // Test a few key navigation links
     await page.click('nav a[href="#foundations-layout"]')
