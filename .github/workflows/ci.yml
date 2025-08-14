@@ -18,3 +18,5 @@ jobs:
       - run: npm run lint:tokens
       - run: npx playwright install --with-deps
       - run: npm run test:e2e
+
+

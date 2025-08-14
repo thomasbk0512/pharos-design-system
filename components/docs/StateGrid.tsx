@@ -19,3 +19,5 @@ export function StateRow({ label, cells }: { label: string; cells: React.ReactNo
     </div>
   )
 }
+
+

@@ -35,7 +35,12 @@ const LUCIDE_RE = /from\s+['"]lucide-react['"]/g
 const ALLOWLIST = new Set([
   'components/pharos/Icon.tsx',
   'components/docs', // docs can import for specimens if needed
-  'src/app/design-system' // design system docs can import for specimens
+  'src/app/design-system', // design system docs can import for specimens
+  'src/app/dashboard', // app pages can import for navigation
+  'src/app/execute', // app pages can import for navigation
+  'src/app/position', // app pages can import for navigation
+  'src/app/trial', // app pages can import for navigation
+  'src/app/recommendations' // app pages can import for navigation
 ])
 
 function scanLucideImports(dir) {

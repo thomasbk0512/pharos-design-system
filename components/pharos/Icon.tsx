@@ -3,7 +3,7 @@ import * as React from 'react'
 import type { LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-type PharosIconSize = 16 | 20 | 24
+type PharosIconSize = 16 | 20 | 24 | 32
 
 export interface PharosIconProps {
   icon: LucideIcon
@@ -27,7 +27,7 @@ export function PharosIcon({
   return (
     <Icon
       className={cn('inline-block align-middle text-current', className)}
-      // lucide uses pixel size; we restrict to 16/20/24 only
+      // lucide uses pixel size; we restrict to 16/20/24/32 only
       size={size}
       strokeWidth={strokeWidth}
       aria-hidden={ariaHidden}
@@ -36,3 +36,5 @@ export function PharosIcon({
     />
   )
 }
+
+

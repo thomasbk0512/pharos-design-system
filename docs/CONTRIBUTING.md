@@ -24,3 +24,5 @@ Open a Major PR and include a migration note in docs. Keep deprecated APIs for â
 - **Responsive design**: Components work across breakpoints with proper mobile behavior
 - **Performance**: Minimal bundle impact, efficient rendering patterns
 - **Testing**: Visual regression tests pass, component behavior verified
+
+

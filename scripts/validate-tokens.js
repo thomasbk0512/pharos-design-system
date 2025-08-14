@@ -29,3 +29,5 @@ try {
   console.error('Token validation error:', e.message)
   process.exit(1)
 }
+
+
