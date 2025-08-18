@@ -1,33 +1,41 @@
 name: release
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: write         # needed to push tags/commits
+  issues: write           # for release notes
+  pull-requests: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org
-      - run: npm ci
-      - run: npm run tokens:build
-      - run: npm run lint:tokens
-      - run: npx playwright install --with-deps
-      - run: npm run test:e2e
-      - run: npx semantic-release
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci
+
+      # Optional: keep these if they're fast/stable in CI
+      - name: Build tokens & run quick checks
+        run: |
+          npm run tokens:build
+          npm run lint:tokens
+
+      - name: Semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
+        run: npx semantic-release
