@@ -6,31 +6,35 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write         # needed to push tags/commits
-  issues: write           # for release notes
+  contents: write
+  issues: write
   pull-requests: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout (full history)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Configure Git (for @semantic-release/git)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
 
       - name: Install deps
         run: npm ci
 
-      # Optional: keep these if they're fast/stable in CI
-      - name: Build tokens & run quick checks
+      # Keep these light checks (skip your full CI to isolate release)
+      - name: Quick sanity checks
         run: |
           npm run tokens:build
           npm run lint:tokens
@@ -38,5 +42,4 @@ jobs:
       - name: Semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release 
+        run: npx semantic-release
