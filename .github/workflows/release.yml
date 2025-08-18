@@ -33,13 +33,9 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      # Keep these light checks (skip your full CI to isolate release)
-      - name: Quick sanity checks
-        run: |
-          npm run tokens:build
-          npm run lint:tokens
-
+      # 🔑 No builds that write to the repo before this line
       - name: Semantic release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: semantic-release:*   # gives clear logs if anything fails
         run: npx semantic-release
