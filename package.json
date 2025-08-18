@@ -1,5 +1,5 @@
 {
-  "name": "@pharos/design-system",
+  "name": "pharos-design-system",
   "version": "1.0.0",
   "type": "module",
   "description": "Design system integrated with Figma MCP server",
