@@ -24,7 +24,7 @@ on:
     # Allow manual triggering
 
 env:
-  FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+  FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
   FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
 
 jobs:

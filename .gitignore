@@ -107,3 +107,8 @@ jspm_packages/
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+# Environment variables
+.env
+.env.local
+.env.*.local

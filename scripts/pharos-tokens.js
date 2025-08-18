@@ -7,7 +7,12 @@ const chalk = require('chalk');
 
 class PharosTokenExtractor {
   constructor() {
-    const accessToken = process.env.FIGMA_ACCESS_TOKEN || '***REMOVED***';
+    const accessToken = process.env.FIGMA_TOKEN;
+    if (!accessToken) {
+      console.error(chalk.red("✗ FIGMA_TOKEN environment variable is required"));
+      console.error(chalk.red("Please set FIGMA_TOKEN in your environment or .env file"));
+      process.exit(1);
+    }
     this.client = new FigmaAPIClient(accessToken);
     
     // PHAROS Design System tokens structure
