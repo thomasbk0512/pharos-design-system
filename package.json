@@ -5,8 +5,13 @@
   "description": "Design system integrated with Figma MCP server",
   "main": "index.js",
   "private": false,
-  "publishConfig": { "access": "public" },
-  "repository": { "type": "git", "url": "https://github.com/your-org/your-repo.git" },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomasbk0512/pharos-design-system.git"
+  },
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
@@ -45,7 +50,7 @@
     "chokidar": "^3.5.3",
     "husky": "^9.0.0",
     "nodemon": "^3.0.1",
-    "semantic-release": "^23.0.0",
+    "semantic-release": "^24.2.7",
     "style-dictionary": "^5.0.1",
     "typescript": "5.9.2"
   },
