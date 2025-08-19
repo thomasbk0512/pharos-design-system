@@ -12,7 +12,7 @@ if [ -z "$CI" ]; then
     exit 1
   }
 else
-  (cd apps/web && npm run test:e2e -- --grep "@smoke" --reporter=dot) || {
+  (cd apps/web && npm run test:e2e -- --grep "@smoke" --reporter=dot --max-failures=1) || {
     echo "Smoke tests failed"
     exit 1
   }

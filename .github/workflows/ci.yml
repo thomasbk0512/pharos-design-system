@@ -10,16 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+
       - run: npm ci
-      - name: Build tokens
-        if: ${{ secrets.FIGMA_TOKEN != '' }}
+
+      - name: Build tokens (guarded)
+        if: ${{ secrets.FIGMA_TOKEN && secrets.FIGMA_TOKEN != '' }}
         run: npm run tokens:build
         env:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+
       - run: npm run lint:tokens
+
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - run: npm run test:e2e
+
+      - name: E2E tests (apps/web)
+        run: npm run --workspace apps/web test:e2e
+        env:
+          NEXT_TELEMETRY_DISABLED: 1

@@ -16,6 +16,13 @@ export default function ConnectDialog({ isOpen, onClose }: Props) {
     onClose()
   }
 
+  React.useEffect(() => {
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isOpen, onClose])
+
   if (!isOpen) return null
 
   return (
@@ -41,6 +48,7 @@ export default function ConnectDialog({ isOpen, onClose }: Props) {
           <button
             className="flex-1 h-10 px-4 rounded-xl bg-blue-600 text-white font-medium"
             onClick={handleConnect}
+            autoFocus
           >
             Connect
           </button>

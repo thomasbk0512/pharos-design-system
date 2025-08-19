@@ -40,7 +40,10 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'pharos-store',
-      storage: createJSONStorage(() => localStorage), // lazy: only in browser
+      storage:
+        typeof window !== 'undefined'
+          ? createJSONStorage(() => localStorage)
+          : undefined, // no storage on server
       partialize: (state) => ({
         draft: state.draft,
         perf: state.perf,
@@ -48,6 +51,11 @@ export const useAppStore = create<AppState>()(
         selected: state.selected,
         isConnected: state.isConnected,
       }),
+      version: 1,
+      migrate: (persisted: any, version) => {
+        // future-proof: adjust shape here when version bumps
+        return persisted
+      },
     }
   )
 )
