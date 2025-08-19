@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import { PositionDraft, Recommendation } from '@/lib/schemas'
 
 type AppState = {
@@ -29,17 +29,28 @@ export const useAppStore = create<AppState>()(
       setRecs: (r) => set({ recs: r }),
       selectRec: (r) => set({ selected: r }),
       setConnected: (v) => set({ isConnected: v }),
-      reset: () => set({ draft: undefined, perf: undefined, recs: [], selected: undefined, isConnected: false })
+      reset: () =>
+        set({
+          draft: undefined,
+          perf: undefined,
+          recs: [],
+          selected: undefined,
+          isConnected: false,
+        }),
     }),
     {
       name: 'pharos-store',
+      storage: createJSONStorage(() => localStorage), // lazy: only in browser
       partialize: (state) => ({
         draft: state.draft,
         perf: state.perf,
         recs: state.recs,
         selected: state.selected,
-        isConnected: state.isConnected
-      })
+        isConnected: state.isConnected,
+      }),
     }
   )
 )
+
+// Optional helper if we ever want a one-liner clear:
+// export const clearPersist = () => useAppStore.persist?.clearStorage?.()

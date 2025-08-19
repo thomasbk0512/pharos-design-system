@@ -14,11 +14,12 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run tokens:build
+      - name: Build tokens
+        if: ${{ secrets.FIGMA_TOKEN != '' }}
+        run: npm run tokens:build
         env:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
       - run: npm run lint:tokens
-      - run: npx playwright install --with-deps
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - run: npm run test:e2e
-
-

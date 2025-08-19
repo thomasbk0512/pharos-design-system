@@ -19,9 +19,21 @@ export default function ConnectDialog({ isOpen, onClose }: Props) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-2xl p-6 max-w-sm w-full mx-4">
-        <h2 className="text-xl font-semibold mb-4">Connect Wallet</h2>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      role="presentation"
+      data-testid="connect-overlay"
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="connect-title"
+        className="bg-white rounded-2xl p-6 max-w-sm w-full mx-4"
+        data-testid="connect-dialog"
+      >
+        <h2 id="connect-title" className="text-xl font-semibold mb-4">
+          Connect Wallet
+        </h2>
         <p className="text-sm text-slate-600 mb-6">
           Connect your wallet to execute strategies and manage positions.
         </p>
