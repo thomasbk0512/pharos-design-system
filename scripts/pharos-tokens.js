@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 const FigmaAPIClient = require('./figma-api-client');
 const fs = require('fs-extra');
 const path = require('path');

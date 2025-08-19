@@ -4,7 +4,7 @@
 echo "🔒 PHAROS pre-commit: tokens + lint + smoke tests"
 npm run tokens:build || { echo "Tokens build failed"; exit 1; }
 npm run lint:tokens || { echo "Token lint failed"; exit 1; }
-npm run test:e2e -- --grep @smoke --reporter=list || {
+cd apps/web && npm run test:e2e -- --grep "@smoke" || {
   echo "Smoke tests failed. For intended visual changes, run: npm run test:update"
   exit 1
 }
