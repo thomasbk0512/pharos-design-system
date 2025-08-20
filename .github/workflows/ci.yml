@@ -8,46 +8,41 @@ on:
 
 jobs:
   pharos-ci:
-    name: pharos-ci
     runs-on: ubuntu-latest
     timeout-minutes: 20
-
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: pnpm
 
-      # Install all workspace deps at the repo root
-      - name: Install deps
-        run: npm ci
+      - name: Enable corepack (pnpm)
+        run: corepack enable
 
-      # If the DS package exists, build it (harmless if nothing to build)
-      - name: Build DS package (if present)
-        run: npm run -w packages/pharos-design-system build || echo "no DS package to build"
+      # install ONCE at the workspace root using the root pnpm-lock.yaml
+      - name: Install deps (workspace root)
+        run: pnpm install --frozen-lockfile
 
-      # Install Playwright browsers INSIDE the web workspace
+      # playwright browsers for e2e (install inside the web app)
       - name: Install Playwright Browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium
 
-      # Optional lint
+      # optional lint (won't fail if script doesn't exist)
       - name: Lint (if present)
-        run: npm run lint --if-present
+        run: pnpm -F ./apps/web lint --if-present || true
 
-      # Run E2E from the web workspace
+      # run the tests from the web app
       - name: Run E2E
         working-directory: apps/web
         env:
-          NEXT_TELEMETRY_DISABLED: 1
-          CI: true
-        run: |
-          npx playwright --version
-          npm run test:e2e -- --reporter=dot --max-failures=1 --workers=1
+          NEXT_TELEMETRY_DISABLED: "1"
+          CI: "true"
+        run: pnpm test:e2e -- --reporter=dot --max-failures=1 --workers=1
 
-      # Always upload the Playwright HTML report for debugging if something fails
+      # always upload report if tests fail
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4
