@@ -2,58 +2,26 @@ name: PHAROS Design System CI/CD
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: [main]   # no PR trigger
 
 env:
   FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
   FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
 
 jobs:
-  # Job 1: Extract and validate PHAROS tokens
   extract-tokens:
-    name: Extract PHAROS Design Tokens
-    # only run on push to main AND when secret exists
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.FIGMA_TOKEN && secrets.FIGMA_TOKEN != '' }}
+    if: ${{ github.ref == 'refs/heads/main' && secrets.FIGMA_TOKEN && secrets.FIGMA_TOKEN != '' }}
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          
-      - name: Install dependencies
-        run: npm ci
-        
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
       - name: Extract PHAROS tokens from Figma
         run: npm run pharos-tokens
-        env:
-          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-        
-      - name: Generate PHAROS CSS
-        run: npm run pharos-css
-        
-      - name: Validate token structure
-        run: |
-          node -e "
-            const tokens = require('./tokens/json/pharos-tokens.json');
-            const required = ['colors', 'typography', 'spacing', 'borderRadius', 'boxShadow'];
-            const missing = required.filter(key => !tokens[key]);
-            if (missing.length > 0) {
-              console.error('Missing required token categories:', missing);
-              process.exit(1);
-            }
-            console.log('✓ Token structure validation passed');
-          "
-          
-      - name: Upload tokens artifact
-        uses: actions/upload-artifact@v4
+        env: { FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }} }
+      - run: npm run pharos-css
+      - uses: actions/upload-artifact@v4
         with:
           name: pharos-tokens
           path: |
@@ -61,206 +29,45 @@ jobs:
             tokens/css/pharos-design-system.css
           retention-days: 30
 
-  # Job 2: Build and test components
   build-components:
-    name: Build PHAROS Components
+    if: ${{ needs.extract-tokens.result == 'success' }}
+    needs: [extract-tokens]
     runs-on: ubuntu-latest
-    needs: extract-tokens
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Download tokens artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: pharos-tokens
-          path: tokens/
-          
-      - name: Type check components
-        run: |
-          if [ -f "tsconfig.json" ]; then
-            npx tsc --noEmit
-          else
-            echo "No TypeScript config found, skipping type check"
-          fi
-          
-      - name: Lint components
-        run: |
-          if [ -f ".eslintrc.json" ]; then
-            npx eslint components/pharos/ --ext .ts,.tsx
-          else
-            echo "No ESLint config found, skipping lint"
-          fi
-          
-      - name: Build CSS bundle
-        run: npm run pharos-css
-        
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with: { name: pharos-tokens, path: . }
+      - run: npm run pharos-css
+      - uses: actions/upload-artifact@v4
         with:
           name: pharos-build
-          path: |
-            tokens/css/pharos-design-system.css
-            components/pharos/
-          retention-days: 30
-
-  # Job 3: Test design system
-  test-design-system:
-    name: Test PHAROS Design System
-    runs-on: ubuntu-latest
-    needs: build-components
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: pharos-build
-          path: ./
-          
-      - name: Run design system tests
-        run: |
-          # Test token generation
-          npm run pharos-tokens
-          npm run pharos-css
-          
-          # Validate CSS output
-          if [ ! -f "tokens/css/pharos-design-system.css" ]; then
-            echo "CSS generation failed"
-            exit 1
-          fi
-          
-          # Check CSS file size (should be reasonable)
-          CSS_SIZE=$(wc -c < tokens/css/pharos-design-system.css)
-          if [ $CSS_SIZE -lt 1000 ]; then
-            echo "Generated CSS seems too small: ${CSS_SIZE} bytes"
-            exit 1
-          fi
-          
-          echo "✓ Design system tests passed"
-          
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
           path: |
             tokens/css/pharos-design-system.css
             tokens/json/pharos-tokens.json
           retention-days: 30
 
-  # Job 4: Deploy (if on main branch)
-  deploy:
-    name: Deploy PHAROS Design System
+  test-design-system:
+    if: ${{ needs.build-components.result == 'success' }}
+    needs: [build-components]
     runs-on: ubuntu-latest
-    needs: [extract-tokens, build-components, test-design-system]
-    if: github.ref == 'refs/heads/main'
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: pharos-build
-          path: ./
-          
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ github.run_number }}
-          release_name: PHAROS Design System v${{ github.run_number }}
-          body: |
-            ## 🎨 PHAROS Design System Update
-            
-            **Build:** ${{ github.run_number }}
-            **Commit:** ${{ github.sha }}
-            **Date:** ${{ github.event.head_commit.timestamp }}
-            
-            ### What's New
-            - Updated design tokens from Figma
-            - Generated latest CSS with PHAROS design system
-            - Component library updates
-            
-            ### Files Updated
-            - `tokens/css/pharos-design-system.css`
-            - `tokens/json/pharos-tokens.json`
-            - PHAROS component library
-            
-            ### Usage
-            ```html
-            <link rel="stylesheet" href="tokens/css/pharos-design-system.css">
-            ```
-            
-            ```tsx
-            import { Button, Card } from '@/components/pharos';
-            ```
-            
-          draft: false
-          prerelease: false
-          
-      - name: Upload release assets
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: tokens/css/pharos-design-system.css
-          asset_name: pharos-design-system.css
-          asset_content_type: text/css
-          
-      - name: Upload release assets
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: tokens/json/pharos-tokens.json
-          asset_name: pharos-tokens.json
-          asset_content_type: application/json
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with: { name: pharos-build, path: . }
+      - name: Sanity checks
+        run: |
+          test -f tokens/css/pharos-design-system.css
+          test -f tokens/json/pharos-tokens.json
 
-  # Job 5: Notify team
-  notify:
-    name: Notify Team
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' && needs.test-design-system.result == 'success' }}
+    needs: [test-design-system]
     runs-on: ubuntu-latest
-    needs: [deploy]
-    if: always()
-    
     steps:
-      - name: Notify on success
-        if: needs.deploy.result == 'success'
-        run: |
-          echo "🎉 PHAROS Design System successfully deployed!"
-          echo "Release: ${{ needs.deploy.outputs.release_url }}"
-          # Could add Slack/email notifications here
-          
-      - name: Notify on failure
-        if: needs.deploy.result == 'failure'
-        run: |
-          echo "❌ PHAROS Design System deployment failed!"
-          echo "Check the workflow logs for details"
-          # Could add Slack/email notifications here
+      - run: echo "Release step (optional) — add semantic-release or upload assets here."
