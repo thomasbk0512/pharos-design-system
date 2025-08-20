@@ -1,12 +1,6 @@
-'use client'
-export const dynamic = 'force-dynamic'
-import ClientShell from '@/components/ClientShell'
-import DashboardSummary from '@/components/DashboardSummary'
+// server component redirect so users see the real flow
+import { redirect } from 'next/navigation';
 
 export default function Page() {
-  return (
-    <ClientShell active="Dashboard">
-      <DashboardSummary />
-    </ClientShell>
-  )
+  redirect('/position/setup?auth=1');
 }

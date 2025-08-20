@@ -1,3 +1,5 @@
+[![pharos-ci](https://github.com/thomasbk0512/pharos-design-system/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/thomasbk0512/pharos-design-system/actions/workflows/ci.yml)
+
 # 🎨 **PHAROS Design System — Light UI**
 
 **Calm, readable, predictable. Light UI only.**
