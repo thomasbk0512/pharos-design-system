@@ -17,6 +17,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       # Optional: lint if you have it
       - run: npm run lint --if-present
       # Your real gate: the web E2E (no FIGMA secrets needed)
