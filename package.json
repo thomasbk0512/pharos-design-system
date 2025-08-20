@@ -1,15 +1,11 @@
 {
   "name": "pharos-monorepo",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
   "scripts": {
-    "build": "npm run -ws build",
-    "dev": "npm run --workspace apps/web dev",
-    "test:e2e": "npm run --workspace apps/web test:e2e",
-    "tokens:build": "npm run --workspace packages/pharos-design-system tokens:build",
+    "build": "pnpm run -r build",
+    "dev": "pnpm --filter pharos-web dev",
+    "test:e2e": "pnpm --filter pharos-web test:e2e",
+    "tokens:build": "pnpm --filter @pharos/design-system tokens:build",
     "lint:tokens": "node scripts/lint-guards.js",
     "release": "semantic-release"
   },
@@ -22,7 +18,8 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.1",
+    "fs-extra": "^11.3.1"
   },
   "packageManager": "pnpm@9.0.0"
 }

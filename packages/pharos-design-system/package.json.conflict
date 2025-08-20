@@ -8,7 +8,14 @@
     ".": "./src/index.ts",
     "./styles/*": "./src/styles/*"
   },
-  "sideEffects": ["*.css", "**/*.css"],
+<<<<<<< HEAD
+  "sideEffects": [ "*.css", "**/*.css"
+=======
+  "sideEffects": [
+    "*.css",
+    "src/styles/*.css"
+>>>>>>> origin/main
+  ],
   "files": [
     "dist"
   ],
@@ -24,8 +31,8 @@
     "react-dom": ">=18"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
     "tsup": "^8.0.0",
     "typescript": "^5.4.0"
   },
