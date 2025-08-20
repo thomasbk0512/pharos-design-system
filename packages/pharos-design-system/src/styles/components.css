@@ -1,0 +1,23 @@
+/* PHAROS Design System - Component Styles */
+/* Components use Tailwind CSS classes, this file provides component-specific overrides if needed */
+
+/* AppShell specific styles */
+.ph-bottom-nav-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Icon component styles */
+.ph-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Button component styles */
+.ph-button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Card component styles */
+.ph-card {
+  transition: box-shadow 0.2s ease-in-out;
+}
