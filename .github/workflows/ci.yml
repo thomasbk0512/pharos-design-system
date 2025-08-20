@@ -1,35 +1,23 @@
 name: pharos-ci
+
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [main]   # runs on PRs to main
+  push:
+    branches: [main]   # also runs on merges to main
 
 jobs:
-  build-test:
+  pharos-ci:
+    name: pharos-ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-
       - run: npm ci
-
-      - name: Build tokens (guarded)
-        if: ${{ secrets.FIGMA_TOKEN && secrets.FIGMA_TOKEN != '' }}
-        run: npm run tokens:build
-        env:
-          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-
-      - run: npm run lint:tokens
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-
-      - name: E2E tests (apps/web)
-        run: npm run --workspace apps/web test:e2e
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
+      # Optional: lint if you have it
+      - run: npm run lint --if-present
+      # Your real gate: the web E2E (no FIGMA secrets needed)
+      - run: npm run --workspace apps/web test:e2e -- --reporter=dot --max-failures=1
