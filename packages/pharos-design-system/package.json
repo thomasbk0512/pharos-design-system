@@ -8,8 +8,7 @@
     ".": "./src/index.ts",
     "./styles/*": "./src/styles/*"
   },
-  "sideEffects": [ "*.css", "**/*.css"
-  ],
+  "sideEffects": ["*.css", "**/*.css"],
   "files": [
     "dist"
   ],
