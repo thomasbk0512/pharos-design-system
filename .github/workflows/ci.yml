@@ -2,9 +2,9 @@ name: pharos-ci
 
 on:
   pull_request:
-    branches: [main]   # runs on PRs to main
+    branches: [main]
   push:
-    branches: [main]   # also runs on merges to main
+    branches: [main]
 
 jobs:
   pharos-ci:
@@ -12,14 +12,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
+      # install all workspaces deps at root
       - run: npm ci
+
+      # install browsers in the web workspace (where Playwright is declared)
       - name: Install Playwright Browsers
+        working-directory: apps/web
         run: npx playwright install --with-deps
-      # Optional: lint if you have it
+
+      # optional lint
       - run: npm run lint --if-present
-      # Your real gate: the web E2E (no FIGMA secrets needed)
-      - run: npm run --workspace apps/web test:e2e -- --reporter=dot --max-failures=1
+
+      # run E2E from the web workspace as well
+      - name: Run E2E
+        working-directory: apps/web
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          CI: true
+        run: npm run test:e2e -- --reporter=dot --max-failures=1
