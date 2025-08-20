@@ -2,9 +2,18 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "🔒 PHAROS pre-commit: tokens + lint + smoke tests"
+
 npm run tokens:build || { echo "Tokens build failed"; exit 1; }
 npm run lint:tokens || { echo "Token lint failed"; exit 1; }
-npm run test:e2e -- --grep @smoke --reporter=list || {
-  echo "Smoke tests failed. For intended visual changes, run: npm run test:update"
-  exit 1
-}
+
+if [ -z "$CI" ]; then
+  (cd apps/web && npm run test:e2e -- --grep "@smoke" --reporter=line) || {
+    echo "Smoke tests failed. For intended visual changes, run: npm run test:update"
+    exit 1
+  }
+else
+  (cd apps/web && npm run test:e2e -- --grep "@smoke" --reporter=dot --max-failures=1) || {
+    echo "Smoke tests failed"
+    exit 1
+  }
+fi

@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import type { LucideIcon } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 type PharosIconSize = 16 | 20 | 24 | 32
 

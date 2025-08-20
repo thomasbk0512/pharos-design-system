@@ -1,0 +1,46 @@
+{
+  "name": "@pharos/design-system",
+  "version": "0.0.0-development",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "./dist/styles/*.css",
+    "./src/styles/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles/*": "./dist/styles/*"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts && npm run copy:styles",
+    "copy:styles": "mkdir -p dist/styles && cp -R src/styles/* dist/styles/",
+    "tokens:build": "cd ../.. && node scripts/pharos-tokens.js && node scripts/validate-tokens.js",
+    "prepublishOnly": "npm run build",
+    "postinstall": "npm run copy:styles || true"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.540.0",
+    "tailwind-merge": "^3.3.1"
+  }
+}

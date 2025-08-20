@@ -1,16 +1,17 @@
 'use client';
 
 import * as React from 'react';
-import { PharosButton } from '@/components/pharos/Button';
-import { PharosIcon } from '@/components/pharos/Icon';
-import { LayoutDashboard, TrendingUp, Lightbulb, Zap } from '@/components/pharos/icons';
-import { type Tab } from '@/constants/nav';
+import { PharosButton } from '../pharos/Button';
+import { PharosIcon } from '../pharos/Icon';
+import { LayoutDashboard, TrendingUp, Lightbulb, Zap } from '../pharos/icons';
+import { type Tab } from '../../constants/nav';
 
 const NAV: Array<{ label: Tab; icon: any }> = [
   { label: 'Dashboard', icon: LayoutDashboard },
-  { label: 'Simulator', icon: TrendingUp },
-  { label: 'Insights',  icon: Lightbulb },
-  { label: 'Advisor',   icon: Zap },
+  { label: 'Position', icon: TrendingUp },
+  { label: 'Recommendations', icon: Lightbulb },
+  { label: 'Execute', icon: Zap },
+  { label: 'Trial', icon: TrendingUp },
 ];
 
 export function AppShell({

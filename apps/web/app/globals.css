@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import DS styles (built path when published; in workspace we rely on src or copy on build) */
+@import "@pharos/design-system/styles/themes.css";
+@import "@pharos/design-system/styles/dark.css";
+@import "@pharos/design-system/styles/a11y.css";
+@import "@pharos/design-system/styles/layout.css";
