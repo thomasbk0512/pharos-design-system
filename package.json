@@ -6,10 +6,10 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm run -ws build",
-    "dev": "npm run --workspace apps/web dev",
-    "test:e2e": "npm run --workspace apps/web test:e2e",
-    "tokens:build": "npm run --workspace packages/pharos-design-system tokens:build",
+    "build": "pnpm run -r build",
+    "dev": "pnpm --filter apps/web dev",
+    "test:e2e": "pnpm --filter apps/web test:e2e",
+    "tokens:build": "pnpm --filter packages/pharos-design-system tokens:build",
     "lint:tokens": "node scripts/lint-guards.js",
     "release": "semantic-release"
   },
