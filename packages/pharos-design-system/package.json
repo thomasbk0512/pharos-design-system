@@ -3,21 +3,15 @@
   "version": "0.0.0-development",
   "private": false,
   "type": "module",
-  "sideEffects": [
-    "./dist/styles/*.css",
-    "./src/styles/*.css"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "src/index.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./styles/*": "./dist/styles/*"
+    ".": "./src/index.ts",
+    "./styles/*": "./src/styles/*"
   },
+  "sideEffects": [
+    "*.css",
+    "src/styles/*.css"
+  ],
   "files": [
     "dist"
   ],
