@@ -1,8 +1,9 @@
+/* Tailwind first */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import DS styles (built path when published; in workspace we rely on src or copy on build) */
+/* Then DS styles */
 @import "@pharos/design-system/styles/themes.css";
 @import "@pharos/design-system/styles/components.css";
 @import "@pharos/design-system/styles/dark.css";
