@@ -19,37 +19,23 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - name: Enable corepack (pnpm)
+      - name: Enable corepack
         run: corepack enable
 
-      # install ONCE at the workspace root using the root pnpm-lock.yaml
-      - name: Install deps (workspace root)
+      - name: Install deps
         run: pnpm install --frozen-lockfile
 
-      # Build DS if it exists (harmless if noop)
-      - name: Build DS package (if present)
-        run: pnpm -F @pharos/design-system build || echo "no DS build step"
-
-      # playwright browsers for e2e (install inside the web app)
-      - name: Install Playwright Browsers
+      - name: Install Playwright browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium
 
-      # optional lint (won't fail if script doesn't exist)
-      - name: Lint (if present)
-        run: pnpm -F ./apps/web lint --if-present || true
-
-      # run the tests from the web app
-      - name: Run E2E
+      - name: Run E2E tests
         working-directory: apps/web
         env:
           NEXT_TELEMETRY_DISABLED: "1"
           CI: "true"
-        run: |
-          npx playwright --version
-          pnpm test:e2e -- --reporter=dot --max-failures=1 --workers=1
+        run: pnpm test:e2e -- --reporter=dot --max-failures=1 --workers=1
 
-      # always upload report if tests fail
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4
