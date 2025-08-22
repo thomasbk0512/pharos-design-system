@@ -4,8 +4,8 @@ module.exports = {
   content: [
     "./app/**/*.{ts,tsx,js,jsx,mdx}",
     "./components/**/*.{ts,tsx,js,jsx,mdx}",
-    // monorepo source (local dev)
-    path.join(__dirname, "../../packages/pharos-design-system/**/*.{ts,tsx,js,jsx,mdx}"),
+    // monorepo source (local dev) - more specific pattern
+    path.join(__dirname, "../../packages/pharos-design-system/src/**/*.{ts,tsx,js,jsx,mdx}"),
     // published build (Vercel)
     "./node_modules/@pharos/design-system/**/*.{js,ts,jsx,tsx}"
   ],
