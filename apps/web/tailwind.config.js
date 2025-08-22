@@ -1,11 +1,15 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    // DS package (switch src ↔ dist depending on what you import from)
-    path.join(__dirname, "../../packages/pharos-design-system/src/**/*.{js,ts,jsx,tsx,mdx}")
+    "./app/**/*.{ts,tsx,js,jsx,mdx}",
+    "./components/**/*.{ts,tsx,js,jsx,mdx}",
+
+    // Monorepo source (local dev & some CI setups)
+    path.join(__dirname, "../../packages/pharos-design-system/**/*.{ts,tsx,js,jsx,mdx}"),
+
+    // Published package (how Vercel resolves it)
+    "./node_modules/@pharos/design-system/**/*.{js,ts,jsx,tsx}"
   ],
   theme: { extend: {} },
   plugins: []
