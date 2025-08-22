@@ -4,9 +4,9 @@ module.exports = {
   content: [
     "./app/**/*.{ts,tsx,js,jsx,mdx}",
     "./components/**/*.{ts,tsx,js,jsx,mdx}",
-    // monorepo source (local dev) - more specific pattern
+    // monorepo source (local dev) - specific to src directory
     path.join(__dirname, "../../packages/pharos-design-system/src/**/*.{ts,tsx,js,jsx,mdx}"),
-    // published build (Vercel)
+    // published build (Vercel) - specific to package
     "./node_modules/@pharos/design-system/**/*.{js,ts,jsx,tsx}"
   ],
   // Keep a broad safelist so DS runtime/dynamic classes are not purged
