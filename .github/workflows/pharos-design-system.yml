@@ -4,23 +4,23 @@ on:
   push:
     branches: [main]   # no PR trigger
 
-env:
-  FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-  FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
-
 jobs:
   extract-tokens:
-    if: ${{ github.ref == 'refs/heads/main' && secrets.FIGMA_TOKEN && secrets.FIGMA_TOKEN != '' }}
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+      - run: pnpm install --frozen-lockfile
       - name: Extract PHAROS tokens from Figma
-        run: npm run pharos-tokens
-        env: { FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }} }
-      - run: npm run pharos-css
+        run: pnpm --filter @pharos/design-system tokens:build
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
       - uses: actions/upload-artifact@v4
         with:
           name: pharos-tokens
@@ -30,43 +30,57 @@ jobs:
           retention-days: 30
 
   build-components:
-    if: ${{ needs.extract-tokens.result == 'success' }}
+    if: needs.extract-tokens.result == 'success'
     needs: [extract-tokens]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+      - run: pnpm install --frozen-lockfile
       - uses: actions/download-artifact@v4
-        with: { name: pharos-tokens, path: . }
-      - run: npm run pharos-css
+        with:
+          name: pharos-tokens
+          path: .
+      - run: pnpm --filter @pharos/design-system build
       - uses: actions/upload-artifact@v4
         with:
           name: pharos-build
           path: |
+            packages/pharos-design-system/dist
             tokens/css/pharos-design-system.css
             tokens/json/pharos-tokens.json
           retention-days: 30
 
   test-design-system:
-    if: ${{ needs.build-components.result == 'success' }}
+    if: needs.build-components.result == 'success'
     needs: [build-components]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+      - run: pnpm install --frozen-lockfile
       - uses: actions/download-artifact@v4
-        with: { name: pharos-build, path: . }
+        with:
+          name: pharos-build
+          path: .
       - name: Sanity checks
         run: |
           test -f tokens/css/pharos-design-system.css
           test -f tokens/json/pharos-tokens.json
+          test -d packages/pharos-design-system/dist
 
   deploy:
-    if: ${{ github.ref == 'refs/heads/main' && needs.test-design-system.result == 'success' }}
+    if: github.ref == 'refs/heads/main' && needs.test-design-system.result == 'success'
     needs: [test-design-system]
     runs-on: ubuntu-latest
     steps:
