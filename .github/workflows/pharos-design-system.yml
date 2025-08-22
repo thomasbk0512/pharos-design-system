@@ -15,12 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
+        with: { node-version: 20, cache: pnpm }
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+      - run: pnpm install --frozen-lockfile
       - name: Extract PHAROS tokens from Figma
-        run: npm run pharos-tokens
+        run: pnpm --filter @pharos/design-system tokens:build
         env: { FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }} }
-      - run: npm run pharos-css
       - uses: actions/upload-artifact@v4
         with:
           name: pharos-tokens
@@ -36,15 +37,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
+        with: { node-version: 20, cache: pnpm }
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+      - run: pnpm install --frozen-lockfile
       - uses: actions/download-artifact@v4
         with: { name: pharos-tokens, path: . }
-      - run: npm run pharos-css
+      - run: pnpm --filter @pharos/design-system build
       - uses: actions/upload-artifact@v4
         with:
           name: pharos-build
           path: |
+            packages/pharos-design-system/dist
             tokens/css/pharos-design-system.css
             tokens/json/pharos-tokens.json
           retention-days: 30
@@ -56,14 +60,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 20, cache: npm }
-      - run: npm ci
+        with: { node-version: 20, cache: pnpm }
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+      - run: pnpm install --frozen-lockfile
       - uses: actions/download-artifact@v4
         with: { name: pharos-build, path: . }
       - name: Sanity checks
         run: |
           test -f tokens/css/pharos-design-system.css
           test -f tokens/json/pharos-tokens.json
+          test -d packages/pharos-design-system/dist
 
   deploy:
     if: ${{ github.ref == 'refs/heads/main' && needs.test-design-system.result == 'success' }}
