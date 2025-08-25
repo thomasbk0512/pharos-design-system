@@ -38,28 +38,28 @@ importers:
     dependencies:
       '@hookform/resolvers':
         specifier: ^5.2.1
-        version: 5.2.1(react-hook-form@7.62.0(react@18.2.0))
+        version: 5.2.1(react-hook-form@7.62.0(react@19.1.1))
       '@pharos/design-system':
         specifier: workspace:*
         version: link:../../packages/pharos-design-system
       next:
         specifier: 14.2.5
-        version: 14.2.5(@playwright/test@1.55.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 14.2.5(@playwright/test@1.55.0)(react-dom@18.2.0(react@19.1.1))(react@19.1.1)
       react:
-        specifier: 18.2.0
-        version: 18.2.0
+        specifier: 19.1.1
+        version: 19.1.1
       react-dom:
         specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
+        version: 18.2.0(react@19.1.1)
       react-hook-form:
         specifier: ^7.62.0
-        version: 7.62.0(react@18.2.0)
+        version: 7.62.0(react@19.1.1)
       zod:
         specifier: ^4.0.17
         version: 4.0.17
       zustand:
         specifier: ^5.0.7
-        version: 5.0.8(@types/react@18.3.23)(react@18.2.0)
+        version: 5.0.8(@types/react@19.1.11)(react@19.1.1)
     devDependencies:
       '@playwright/test':
         specifier: ^1.45.0
@@ -68,11 +68,11 @@ importers:
         specifier: 24.3.0
         version: 24.3.0
       '@types/react':
-        specifier: ^18.2.0
-        version: 18.3.23
+        specifier: ^19.1.11
+        version: 19.1.11
       '@types/react-dom':
         specifier: ^18.2.0
-        version: 18.3.7(@types/react@18.3.23)
+        version: 18.3.7(@types/react@19.1.11)
       autoprefixer:
         specifier: ^10.4.0
         version: 10.4.21(postcss@8.5.6)
@@ -93,23 +93,23 @@ importers:
         version: 2.1.1
       lucide-react:
         specifier: ^0.540.0
-        version: 0.540.0(react@18.2.0)
+        version: 0.540.0(react@19.1.1)
       react:
         specifier: '>=18'
-        version: 18.2.0
+        version: 19.1.1
       react-dom:
         specifier: '>=18'
-        version: 18.2.0(react@18.2.0)
+        version: 18.2.0(react@19.1.1)
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
       '@types/react':
-        specifier: ^18.2.0
-        version: 18.3.23
+        specifier: ^19.1.11
+        version: 19.1.11
       '@types/react-dom':
         specifier: ^18.2.0
-        version: 18.3.7(@types/react@18.3.23)
+        version: 18.3.7(@types/react@19.1.11)
       tsup:
         specifier: ^8.0.0
         version: 8.5.0(jiti@1.21.7)(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
@@ -628,16 +628,13 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
-  '@types/prop-types@15.7.15':
-    resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
-
   '@types/react-dom@18.3.7':
     resolution: {integrity: sha512-MEe3UeoENYVFXzoXEWsvcpg6ZvlrFNlOQ7EOsvhI3CfAXwzPfO8Qwuxd40nepsYKqyyVQnTdEfv68q91yLcKrQ==}
     peerDependencies:
       '@types/react': ^18.0.0
 
-  '@types/react@18.3.23':
-    resolution: {integrity: sha512-/LDXMQh55EzZQ0uVAZmKKhfENivEvWz6E+EYzh+/MCjMhNsotd+ZHhBGIjFDTi6+fz0OhQQQLbTgdQIxxCsC0w==}
+  '@types/react@19.1.11':
+    resolution: {integrity: sha512-lr3jdBw/BGj49Eps7EvqlUaoeA0xpj3pc0RoJkHpYaCHkVK7i28dKyImLQb3JVlqs3aYSXf7qYuWOW/fgZnTXQ==}
 
   acorn@8.15.0:
     resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
@@ -1791,8 +1788,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
 
-  react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  react@19.1.1:
+    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -2329,10 +2326,10 @@ snapshots:
   '@esbuild/win32-x64@0.25.9':
     optional: true
 
-  '@hookform/resolvers@5.2.1(react-hook-form@7.62.0(react@18.2.0))':
+  '@hookform/resolvers@5.2.1(react-hook-form@7.62.0(react@19.1.1))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.62.0(react@18.2.0)
+      react-hook-form: 7.62.0(react@19.1.1)
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -2656,15 +2653,12 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@types/prop-types@15.7.15': {}
-
-  '@types/react-dom@18.3.7(@types/react@18.3.23)':
+  '@types/react-dom@18.3.7(@types/react@19.1.11)':
     dependencies:
-      '@types/react': 18.3.23
+      '@types/react': 19.1.11
 
-  '@types/react@18.3.23':
+  '@types/react@19.1.11':
     dependencies:
-      '@types/prop-types': 15.7.15
       csstype: 3.1.3
 
   acorn@8.15.0: {}
@@ -3344,9 +3338,9 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lucide-react@0.540.0(react@18.2.0):
+  lucide-react@0.540.0(react@19.1.1):
     dependencies:
-      react: 18.2.0
+      react: 19.1.1
 
   magic-string@0.30.17:
     dependencies:
@@ -3411,7 +3405,7 @@ snapshots:
 
   nerf-dart@1.0.0: {}
 
-  next@14.2.5(@playwright/test@1.55.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next@14.2.5(@playwright/test@1.55.0)(react-dom@18.2.0(react@19.1.1))(react@19.1.1):
     dependencies:
       '@next/env': 14.2.5
       '@swc/helpers': 0.5.5
@@ -3419,9 +3413,9 @@ snapshots:
       caniuse-lite: 1.0.30001735
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
+      react: 19.1.1
+      react-dom: 18.2.0(react@19.1.1)
+      styled-jsx: 5.1.1(react@19.1.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.5
       '@next/swc-darwin-x64': 14.2.5
@@ -3663,19 +3657,17 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-dom@18.2.0(react@18.2.0):
+  react-dom@18.2.0(react@19.1.1):
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
+      react: 19.1.1
       scheduler: 0.23.2
 
-  react-hook-form@7.62.0(react@18.2.0):
+  react-hook-form@7.62.0(react@19.1.1):
     dependencies:
-      react: 18.2.0
+      react: 19.1.1
 
-  react@18.2.0:
-    dependencies:
-      loose-envify: 1.4.0
+  react@19.1.1: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -3899,10 +3891,10 @@ snapshots:
 
   strip-json-comments@2.0.1: {}
 
-  styled-jsx@5.1.1(react@18.2.0):
+  styled-jsx@5.1.1(react@19.1.1):
     dependencies:
       client-only: 0.0.1
-      react: 18.2.0
+      react: 19.1.1
 
   sucrase@3.35.0:
     dependencies:
@@ -4144,7 +4136,7 @@ snapshots:
 
   zod@4.0.17: {}
 
-  zustand@5.0.8(@types/react@18.3.23)(react@18.2.0):
+  zustand@5.0.8(@types/react@19.1.11)(react@19.1.1):
     optionalDependencies:
-      '@types/react': 18.3.23
-      react: 18.2.0
+      '@types/react': 19.1.11
+      react: 19.1.1
