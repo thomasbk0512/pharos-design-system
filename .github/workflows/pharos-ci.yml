@@ -1,18 +1,23 @@
 name: pharos-ci
-
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
-
 jobs:
   pharos-ci:
     name: pharos-ci
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 20
     steps:
-      - name: Force green
-        run: |
-          echo "pharos-ci OK"
-          exit 0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Install deps
+        run: pnpm install --no-frozen-lockfile
+      - name: Build web
+        run: pnpm --filter ./apps/web... run build

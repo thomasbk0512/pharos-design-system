@@ -1,11 +1,11 @@
+/* Tailwind first */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* PHAROS DS CSS (keep order) */
+/* Then DS styles */
 @import "@pharos/design-system/styles/themes.css";
 @import "@pharos/design-system/styles/components.css";
 @import "@pharos/design-system/styles/dark.css";
 @import "@pharos/design-system/styles/a11y.css";
 @import "@pharos/design-system/styles/layout.css";
-

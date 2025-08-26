@@ -39,3 +39,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: semantic-release:*   # gives clear logs if anything fails
         run: npx semantic-release
+

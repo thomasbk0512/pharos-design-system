@@ -20,3 +20,4 @@ export default function Page({ searchParams }: { searchParams?: { [k: string]: s
     </ClientShell>
   )
 }
+

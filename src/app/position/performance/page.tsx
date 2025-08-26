@@ -87,3 +87,4 @@ export default function PerformancePage() {
     </AppShell>
   )
 }
+
