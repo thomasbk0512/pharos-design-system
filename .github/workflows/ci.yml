@@ -21,7 +21,6 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      # Make pnpm available; if packageManager is missing, still prepare it.
       - name: Enable Corepack + pin pnpm
         run: |
           corepack enable
@@ -32,16 +31,11 @@ jobs:
           pnpm --version
           node -v
 
-      # Install from the workspace root; avoid frozen lockfile insta-fail
       - name: Install deps (pnpm)
         run: pnpm install --no-frozen-lockfile
 
-      # Best-effort DS build (don't fail CI if missing/no-op)
       - name: Build DS package (if present)
         run: pnpm --filter ./packages/pharos-design-system... run -r build || echo "no DS build step"
 
-      # Always build the web app by path (works regardless of package name)
       - name: Build web app
         run: pnpm --filter ./apps/web... run build
-
-# Trigger CI update
