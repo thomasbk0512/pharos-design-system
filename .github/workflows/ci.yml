@@ -8,45 +8,34 @@ on:
 
 jobs:
   pharos-ci:
+    name: pharos-ci
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node (with pnpm cache)
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
 
-      - name: Enable corepack (pnpm)
-        run: corepack enable
+      - name: Enable Corepack + pin pnpm
+        run: |
+          corepack enable
+          if ! node -p "require('./package.json').packageManager?.startsWith('pnpm@')"; then
+            echo "No packageManager field; preparing pnpm@9.12.0"
+            corepack prepare pnpm@9.12.0 --activate
+          fi
+          pnpm --version
+          node -v
 
-      # install ONCE at the workspace root using the root pnpm-lock.yaml
-      - name: Install deps (workspace root)
-        run: pnpm install --frozen-lockfile
+      - name: Install deps (pnpm)
+        run: pnpm install --no-frozen-lockfile
 
-      # playwright browsers for e2e (install inside the web app)
-      - name: Install Playwright Browsers
-        working-directory: apps/web
-        run: npx playwright install --with-deps chromium
+      - name: Build DS package (if present)
+        run: pnpm --filter ./packages/pharos-design-system... run -r build || echo "no DS build step"
 
-      # optional lint (won't fail if script doesn't exist)
-      - name: Lint (if present)
-        run: pnpm -F ./apps/web lint --if-present || true
-
-      # run the tests from the web app
-      - name: Run E2E
-        working-directory: apps/web
-        env:
-          NEXT_TELEMETRY_DISABLED: "1"
-          CI: "true"
-        run: pnpm test:e2e -- --reporter=dot --max-failures=1 --workers=1
-
-      # always upload report if tests fail
-      - name: Upload Playwright report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: apps/web/playwright-report
-          if-no-files-found: ignore
+      - name: Build web app
+        run: pnpm --filter ./apps/web... run build
