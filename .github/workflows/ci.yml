@@ -43,3 +43,5 @@ jobs:
       # Always build the web app by path (works regardless of package name)
       - name: Build web app
         run: pnpm --filter ./apps/web... run build
+
+# Trigger CI update
