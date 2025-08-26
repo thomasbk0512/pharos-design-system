@@ -8,6 +8,7 @@ on:
 
 jobs:
   pharos-ci:
+    name: pharos-ci
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
