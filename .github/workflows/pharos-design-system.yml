@@ -42,7 +42,7 @@ jobs:
       - name: Enable corepack (pnpm)
         run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: pharos-tokens
           path: .
@@ -69,7 +69,7 @@ jobs:
       - name: Enable corepack (pnpm)
         run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           name: pharos-build
           path: .
