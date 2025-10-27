@@ -21,7 +21,7 @@ jobs:
         run: pnpm --filter @pharos/design-system tokens:build
         env:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: pharos-tokens
           path: |
@@ -47,7 +47,7 @@ jobs:
           name: pharos-tokens
           path: .
       - run: pnpm --filter @pharos/design-system build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: pharos-build
           path: |
